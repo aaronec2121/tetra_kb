@@ -12,8 +12,9 @@
 if SHIELD_CORNE_TP_RIGHT
 
 config ZMK_KEYBOARD_NAME
-    default "Corne TP"
+    default "tetra_kb"
 
+# Ensure this is set to 'y' for the right side or globally if right is master
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
