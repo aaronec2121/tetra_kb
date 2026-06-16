@@ -5,16 +5,16 @@
     encoder_1: encoder_1 {
         compatible = "alps,ec11";
         // Replace 14 and 15 with the actual nice!nano pins used for Encoder 1's A and B channels
-        a-gpios = <&pro_micro 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        b-gpios = <&pro_micro 18 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        a-gpios = <&pro_micro 18 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        b-gpios = <&pro_micro 15 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         steps = <20>;
     };
 
     encoder_2: encoder_2 {
         compatible = "alps,ec11";
         // Replace 16 and 10 with the actual nice!nano pins used for Encoder 2's A and B channels
-        a-gpios = <&pro_micro 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
-        b-gpios = <&pro_micro 19 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        a-gpios = <&pro_micro 19 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        b-gpios = <&pro_micro 20 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
         steps = <20>;
     };
 
