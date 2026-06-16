@@ -10,11 +10,8 @@ manifest:
       url-base: https://github.com/urob
 
   projects:
-
-    #
     # zmk fork
     # Uncomment only one of these...
-    #
 
     # Standard, stable zmk repo without mouse PR.
     # Not compatible with the PS/2 mouse & TP driver module.
@@ -53,14 +50,13 @@ manifest:
     #   revision: pr-testing/mouse_ps2_module_base_urob
     #   import: app/west.yml
 
-    #
+
     # Additional zmk modules
-    #
 
     # Module for PS/2 mouse & TP driver
     - name: kb_zmk_ps2_mouse_trackpoint_driver
       remote: infused-kim
-      revision: main
+      revision: pr-testing/mouse_ps2_module_base_urob
 
   self:
     path: config
