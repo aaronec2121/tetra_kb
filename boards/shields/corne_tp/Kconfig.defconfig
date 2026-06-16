@@ -11,10 +11,6 @@ endif
 if SHIELD_CORNE_TP_LEFT
     config ZMK_DISPLAY
         default y
-
-    # Forces the built-in status screen graphics loop
-    config ZMK_DISPLAY_STATUS_SCREEN_BUILT_IN
-        default y
 endif
 
 # global enables
