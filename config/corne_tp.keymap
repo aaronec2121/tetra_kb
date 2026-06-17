@@ -49,7 +49,7 @@
   #define U_TOG_TP_SET &none
 #endif
 
-// Disable line-wrap in your editor to see a "visualization" of the key layouts
+
 / {
 
   keymap {
@@ -70,8 +70,8 @@
         &kp LCTRL &kp Z     &kp X    &kp C     &kp V       &kp B     &kp N &kp M       &kp COMMA      &kp DOT   &kp SLASH &kp BSLH
         &kp HOME  &mt LCTRL LEFT &mt LALT RIGHT &lt 2 RET &lt 1 SPACE &kp END   &none &lt 1 SPACE &mo 2 &kp LEFT &kp RIGHT &kp C_PP
       >;
-      // Position 1: Right Enc 1 | Position 2: Right Enc 2 | Position 3: Left Enc 1 | Position 4: Left Enc 2
-      sensor-bindings = <&inc_dec_kp LEFT RIGHT &inc_dec_kp UP DOWN &inc_dec_kp LEFT RIGHT &inc_dec_kp UP DOWN>;
+      // encoder order: RH Left, RH Right, LH Left, LH Right
+      sensor-bindings = <&inc_dec_kp LEFT RIGHT &inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp LEFT UP &inc_dec_kp UP DOWN>;
     };
 
     numpad_layer {
@@ -82,8 +82,8 @@
         &kp LCTRL &none     &none     &kp N1 &kp N2  &kp N3                                          &kp N1 &kp N2  &kp N3  &kp LBRC &kp RBRC &none
                             &kp HOME  &kp N0 &kp DOT &kp RET &lt 1 SPACE &kp END   &none &lt 1 SPACE &kp N0 &kp DOT &kp RET &kp C_PP
       >;
-      // Position 1: Right Enc 1 | Position 2: Right Enc 2 | Position 3: Left Enc 1 | Position 4: Left Enc 2
-      sensor-bindings = <&inc_dec_kp LEFT RIGHT &inc_dec_kp UP DOWN &inc_dec_kp LEFT RIGHT &inc_dec_kp UP DOWN>;
+      // encoder order: RH Left, RH Right, LH Left, LH Right
+      sensor-bindings = <&inc_dec_kp LEFT RIGHT &inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp LEFT UP &inc_dec_kp UP DOWN>;
     };
 
     navigation_layer {
@@ -94,47 +94,33 @@
         &kp LCTRL &none  &none    &kp LEFT &kp DOWN &kp RIGHT                                     &kp LEFT &kp DOWN &kp RIGHT &kp LGUI &none  &none
                          &kp HOME &none    &none    &lt 2 RET &kp SPACE &kp END   &none &kp SPACE &none &none &none &kp C_PP
       >;
-      // Position 1: Right Enc 1 | Position 2: Right Enc 2 | Position 3: Left Enc 1 | Position 4: Left Enc 2
-      sensor-bindings = <&inc_dec_kp LEFT RIGHT &inc_dec_kp UP DOWN &inc_dec_kp LEFT RIGHT &inc_dec_kp UP DOWN>;
+      // encoder order: RH Left, RH Right, LH Left, LH Right
+      sensor-bindings = <&inc_dec_kp LEFT RIGHT &inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp LEFT UP &inc_dec_kp UP DOWN>;
     };
-
 
 
 #ifdef HAS_MOUSE_KEYS
-
     MouseKeys_layer {
       display-name = "MouseKeys";
       bindings = <
-// ╭────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────╮    ╭────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────╮
-     U_TOG_TP_SET             U_TOG_TP_SET             &none                    &mmv MOVE_UP             &msc SCRL_UP             &none                         &none                    &msc SCRL_UP             &mmv MOVE_UP             &none                    U_TOG_TP_SET              U_TOG_TP_SET
-// ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤
-     &trans                   &none                    &mmv MOVE_LEFT           &mmv MOVE_DOWN           &mmv MOVE_RIGHT          &none                         &none                    &mmv MOVE_LEFT           &mmv MOVE_DOWN           &mmv MOVE_RIGHT          &none                     &trans
-// ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤
-     &trans                   &none                    &none                    &none                    &msc SCRL_DOWN           &none                         &none                    &msc SCRL_DOWN           &none                    &none                    &trans                    &trans
-// ╰────────────────────────┴────────────────────────┴────────────────────────┴────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┴────────────────────────┼────────────────────────╯
-                                                                                &mkp MCLK                &mkp LCLK                &mkp RCLK                     &mkp MCLK                &mkp LCLK                &mkp RCLK
-//                                                                            ╰────────────────────────┴────────────────────────┴────────────────────────╯    ╰────────────────────────┴────────────────────────┴────────────────────────╯
+        U_TOG_TP_SET U_TOG_TP_SET &none &mmv MOVE_UP &msc SCRL_UP &none &none &msc SCRL_UP &mmv MOVE_UP &none U_TOG_TP_SET U_TOG_TP_SET
+        &trans &none &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none &none &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none &trans
+        &trans &none &none &none &msc SCRL_DOWN &none &none &msc SCRL_DOWN &none &none &trans &trans
+            &trans &trans &mkp MCLK &mkp LCLK &mkp RCLK &mkp MCLK &mkp LCLK &mkp RCLK &trans &trans
       >;
     };
-
 #endif
 
 #ifdef HAS_MOUSE_TP
-
     // Automatically activated when the mouse or trackpoint moves.
     // Configured in `include/mouse_tp.dtsi`.
     MouseTP_layer {
       display-name = "TP";
       bindings = <
-// ╭────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────╮    ╭────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────╮
-     U_TOG_TP_SET             U_TOG_TP_SET             &trans                   &trans                   &msc SCRL_UP             &trans                        &trans                   &trans                   &trans                   &trans                   U_TOG_TP_SET              U_TOG_TP_SET
-// ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤
-     &trans                   &trans                   &trans                   &trans                   &trans                   &trans                        &trans                   &trans                   &trans                   &trans                   &trans                    &trans
-// ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤
-     &trans                   &trans                   &trans                   &trans                   &msc SCRL_DOWN           &trans                        &trans                   &trans                   &trans                   &trans                   &trans                    &trans
-// ╰────────────────────────┴────────────────────────┴────────────────────────┴────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┴────────────────────────┼────────────────────────╯
-                                                                                &mkp MCLK                &mkp LCLK                &mkp RCLK                     &mkp MCLK                &mkp LCLK                &mkp RCLK
-//                                                                            ╰────────────────────────┴────────────────────────┴────────────────────────╯    ╰────────────────────────┴────────────────────────┴────────────────────────╯
+        U_TOG_TP_SET U_TOG_TP_SET &trans &trans &msc SCRL_UP   &trans      &trans &trans &trans &trans U_TOG_TP_SET U_TOG_TP_SET
+        &trans       &trans       &trans &trans &trans         &trans      &trans &trans &trans &trans &trans       &trans
+        &trans       &trans       &trans &trans &msc SCRL_DOWN &trans      &trans &trans &trans &trans &trans       &trans
+             &trans  &trans   &mkp MCLK  &mkp LCLK  &mkp RCLK   &mkp MCLK  &mkp LCLK  &mkp RCLK &trans &trans
       >;
     };
 
@@ -142,15 +128,10 @@
     MouseSettings_layer {
       display-name = "TP Set";
       bindings = <
-// ╭────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────╮    ╭────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────┬────────────────────────╮
-     U_TOG_TP_SET             U_TOG_TP_SET             &none                    U_MSS_TP_S_D             U_MSS_TP_S_I             U_MSS_TP_PT_I                 U_MSS_TP_PT_I            U_MSS_TP_S_D             U_MSS_TP_S_I             &none                    U_TOG_TP_SET              U_TOG_TP_SET
-// ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤
-     U_MSS_RESET              U_MSS_RESET              &none                    U_MSS_TP_NI_D            U_MSS_TP_NI_I            U_MSS_TP_PT_D                 U_MSS_TP_PT_D            U_MSS_TP_NI_D            U_MSS_TP_NI_I            &none                    U_MSS_RESET               U_MSS_RESET
-// ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┤
-     U_MSS_LOG                U_MSS_LOG                &none                    U_MSS_TP_V6_D            U_MSS_TP_V6_I            &none                         &none                    U_MSS_TP_V6_D            U_MSS_TP_V6_I            &none                    U_MSS_LOG                 U_MSS_LOG
-// ╰────────────────────────┴────────────────────────┴────────────────────────┴────────────────────────┼────────────────────────┼────────────────────────┤    ├────────────────────────┼────────────────────────┼────────────────────────┼────────────────────────┴────────────────────────┼────────────────────────╯
-                                                                                &trans                   &mkp LCLK                &mkp RCLK                     &none                    &mkp LCLK                &mkp RCLK
-//                                                                            ╰────────────────────────┴────────────────────────┴────────────────────────╯    ╰────────────────────────┴────────────────────────┴────────────────────────╯
+        U_TOG_TP_SET U_TOG_TP_SET &none U_MSS_TP_S_D U_MSS_TP_S_I U_MSS_TP_PT_I U_MSS_TP_PT_I U_MSS_TP_S_D U_MSS_TP_S_I &none U_TOG_TP_SET U_TOG_TP_SET
+        U_MSS_RESET U_MSS_RESET &none U_MSS_TP_NI_D U_MSS_TP_NI_I U_MSS_TP_PT_D U_MSS_TP_PT_D U_MSS_TP_NI_D U_MSS_TP_NI_I &none U_MSS_RESET U_MSS_RESET
+        U_MSS_LOG U_MSS_LOG &none U_MSS_TP_V6_D U_MSS_TP_V6_I &none &none U_MSS_TP_V6_D U_MSS_TP_V6_I &none U_MSS_LOG U_MSS_LOG
+            &trans &trans &trans &mkp LCLK &mkp RCLK &none &mkp LCLK &mkp RCLK &trans &trans
       >;
     };
 
