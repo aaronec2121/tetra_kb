@@ -71,8 +71,10 @@
             &kp HOME  &mt LCTRL LEFT &mt LALT RIGHT &lt 2 RET &lt 1 SPACE &kp END   &none &lt 1 SPACE &mo 2 &kp LEFT &kp RIGHT &kp C_PP
       >;
       sensor-bindings = <
-        &inc_dec_kp LEFT RIGHT &inc_dec_kp C_VOL_UP C_VOL_DN
-        &inc_dec_kp LEFT UP &inc_dec_kp UP DOWN
+        &inc_dec_kp LEFT RIGHT
+        &inc_dec_kp C_VOL_UP C_VOL_DN
+        &inc_dec_kp LEFT UP
+        &inc_dec_kp UP DOWN
         >;
     };
 
@@ -85,8 +87,10 @@
                             &kp HOME  &kp N0 &kp DOT &kp RET &lt 1 SPACE &kp END   &none &lt 1 SPACE &kp N0 &kp DOT &kp RET &kp C_PP
       >;
       sensor-bindings = <
-        &inc_dec_kp LEFT RIGHT &inc_dec_kp C_VOL_UP C_VOL_DN
-        &inc_dec_kp LEFT UP &inc_dec_kp UP DOWN
+        &inc_dec_kp LEFT RIGHT
+        &inc_dec_kp C_VOL_UP C_VOL_DN
+        &inc_dec_kp LEFT UP
+        &inc_dec_kp UP DOWN
         >;
     };
 
@@ -100,8 +104,10 @@
       >;
       // encoder order: RH Left, RH Right, LH Left, LH Right
       sensor-bindings = <
-        &inc_dec_kp LEFT RIGHT &inc_dec_kp C_VOL_UP C_VOL_DN
-        &inc_dec_kp LEFT UP &inc_dec_kp UP DOWN
+        &inc_dec_kp LEFT RIGHT
+        &inc_dec_kp C_VOL_UP C_VOL_DN
+        &inc_dec_kp LEFT UP
+        &inc_dec_kp UP DOWN
         >;
     };
 
