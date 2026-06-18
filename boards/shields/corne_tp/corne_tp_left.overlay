@@ -1,5 +1,5 @@
-#include "corne_tp.dtsi"
 #include <boards/shields/nice_view/nice_view.dtsi>
+#include "corne_tp.dtsi"
 
 / {
     encoder_1: encoder_1 {
