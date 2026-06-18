@@ -1,6 +1,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
 
 #define base 0
 #define numpad 1
@@ -80,11 +81,11 @@
         MACRO(plsmns, &macro_press &kp LALT &macro_tap &kp KP_N0 &kp KP_N1 &kp KP_N7 &kp KP_N7 &macro_release &kp LALT)   // plus minus symbol
         MACRO(int, &macro_press &kp LSHFT &macro_tap &kp I &macro_release &kp LSHFT &macro_tap &kp N &kp T &kp E &kp R &kp F &kp E &kp R &kp O &kp M &kp E &kp T &kp E &kp R &kp N2 &kp RET)
         MACRO(paren, &macro_tap &kp F2 &kp LPAR &kp RPAR &kp LEFT)   // double parenthesis
-        MACRO(mcr_in, &macro_tap &kp I &kp N)     // inches
-        MACRO(mcr_mm, &macro_tap &kp M &kp M)     // millimeters
-        MACRO(mcr_altb, &macro_press &kp LALT &kp TAB &macro_release &kp LALT)   // alt+tab
-        MACRO(mcr_tilelt, &macro_press &kp LGUI &kp LEFT &macro_release &kp LGUI)   // tile left
-        MACRO(mcr_tilert, &macro_press &kp LGUI &kp RIGHT &macro_release &kp LGUI)   // tile right
+        MACRO(in, &macro_tap &kp I &kp N)     // inches
+        MACRO(mm, &macro_tap &kp M &kp M)     // millimeters
+        MACRO(altb, &macro_press &kp LALT &kp TAB &macro_release &kp LALT)   // alt+tab
+        MACRO(tilelt, &macro_press &kp LGUI &kp LEFT &macro_release &kp LGUI)   // tile left
+        MACRO(tilert, &macro_press &kp LGUI &kp RIGHT &macro_release &kp LGUI)   // tile right
 
         // Macros to move by whole words and select words
         MACRO(prv_wrd, &macro_press &kp LCTRL &macro_tap &kp LEFT &macro_release &kp LCTRL)
@@ -193,7 +194,7 @@
         &kp TAB   &kp Q     &kp W    &kp E      &kp R       &kp T                        &kp Y       &kp U     &kp I     &kp O     &kp P     &kp BSPC
         &kp LSHFT &kp A     &kp S    &kp D      &kp F       &kp G                        &kp H       &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
         &kp LCTRL &kp Z     &kp X    &kp C      &kp V       &kp B                        &kp N       &kp M     &kp COMMA &kp DOT   &kp SLASH &kp RSHFT
-        &mcr_altb &mt LCTRL LEFT &mt LALT RIGHT &lt 2 RET &lt 1 SPACE &kp C_PP   &C_PREV &lt 1 SPACE &lt 2 RET &kp LEFT  &kp RIGHT &C_NEXT
+        &mcr_altb &mt LCTRL LEFT &mt LALT RIGHT &lt 2 RET &lt 1 SPACE &kp C_PP   &kp C_PREV &lt 1 SPACE &lt 2 RET &kp LEFT  &kp RIGHT &kp C_NEXT
       >;
       sensor-bindings = <
         &inc_dec_kp LEFT RIGHT
@@ -222,10 +223,10 @@
     navigation_layer {
       display-name = "navigation";
       bindings = <
-        &kp TAB   &kp N1 &kp N2 &kp N3      &kp N4      &kp N5                                         &kp N6 &kp N7     &kp N8    &kp N9   &kp N0 &kp GRAVE
-        &kp LSHFT &none  &none  &kp N4      &kp HOME    &kp END                                        &kp HOME &kp END  &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI
-        &kp LCTRL &none  &none  &kp LEFT    &kp DOWN    &kp RIGHT                                      &kp LEFT &kp DOWN &kp RIGHT &kp LGUI &rgb_ug RGB_BRD  &rgb_ug RGB_BRI
-                         &trans &mcr_tilelt &mcr_tilelt &trans &trans &ext_power   &rgb_ug RGB_TOG &trans &trans &mcr_tilelt &mcr_tilert &rgb_ug RGB_EFF
+        &kp TAB   &kp N1 &kp N2 &kp N3      &kp N4      &kp N5                                           &kp N6 &kp N7     &kp N8    &kp N9   &kp N0 &kp GRAVE
+        &kp LSHFT &none  &none  &kp N4      &kp HOME    &kp END                                          &kp HOME &kp END  &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI
+        &kp LCTRL &none  &none  &kp LEFT    &kp DOWN    &kp RIGHT                                        &kp LEFT &kp DOWN &kp RIGHT &kp LGUI &rgb_ug RGB_BRD  &rgb_ug RGB_BRI
+                         &trans &mcr_tilelt &mcr_tilert &trans &trans &ext_power EP_TOG  &rgb_ug RGB_TOG &trans &trans &mcr_tilelt &mcr_tilert &rgb_ug RGB_EFF
       >;
       // encoder order: RH Left, RH Right, LH Left, LH Right
       sensor-bindings = <
@@ -244,7 +245,7 @@
         U_TOG_TP_SET U_TOG_TP_SET &none &mmv MOVE_UP &msc SCRL_UP &none &none &msc SCRL_UP &mmv MOVE_UP &none U_TOG_TP_SET U_TOG_TP_SET
         &trans &none &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none &none &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none &trans
         &trans &none &none &none &msc SCRL_DOWN &none &none &msc SCRL_DOWN &none &none &trans &trans
-            &trans &trans &mkp MCLK &mkp LCLK &mkp RCLK &mkp MCLK &mkp LCLK &mkp RCLK &trans &trans
+        &trans &trans &trans &mkp MCLK &mkp LCLK &mkp RCLK &mkp MCLK &mkp LCLK &mkp RCLK &trans &trans &trans
       >;
     };
 #endif
@@ -258,7 +259,7 @@
         U_TOG_TP_SET U_TOG_TP_SET &trans &trans &msc SCRL_UP   &trans      &trans &trans &trans &trans U_TOG_TP_SET U_TOG_TP_SET
         &trans       &trans       &trans &trans &trans         &trans      &trans &trans &trans &trans &trans       &trans
         &trans       &trans       &trans &trans &msc SCRL_DOWN &trans      &trans &trans &trans &trans &trans       &trans
-             &trans  &trans   &mkp MCLK  &mkp LCLK  &mkp RCLK   &mkp MCLK  &mkp LCLK  &mkp RCLK &trans &trans
+        &trans &trans  &trans   &mkp MCLK  &mkp LCLK  &mkp RCLK   &mkp MCLK  &mkp LCLK  &mkp RCLK &trans &trans &trans
       >;
     };
 
@@ -269,7 +270,7 @@
         U_TOG_TP_SET U_TOG_TP_SET &none U_MSS_TP_S_D U_MSS_TP_S_I U_MSS_TP_PT_I U_MSS_TP_PT_I U_MSS_TP_S_D U_MSS_TP_S_I &none U_TOG_TP_SET U_TOG_TP_SET
         U_MSS_RESET U_MSS_RESET &none U_MSS_TP_NI_D U_MSS_TP_NI_I U_MSS_TP_PT_D U_MSS_TP_PT_D U_MSS_TP_NI_D U_MSS_TP_NI_I &none U_MSS_RESET U_MSS_RESET
         U_MSS_LOG U_MSS_LOG &none U_MSS_TP_V6_D U_MSS_TP_V6_I &none &none U_MSS_TP_V6_D U_MSS_TP_V6_I &none U_MSS_LOG U_MSS_LOG
-            &trans &trans &trans &mkp LCLK &mkp RCLK &none &mkp LCLK &mkp RCLK &trans &trans
+        &trans &trans &trans &trans &mkp LCLK &mkp RCLK &none &mkp LCLK &mkp RCLK &trans &trans &trans
       >;
     };
 
