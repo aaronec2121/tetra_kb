@@ -8,15 +8,35 @@
 #define MOUSE_TP 3
 #define MOUSE_TP_SET 4
 
+// This defines a special way of defining combos that makes them way more compact
+#define COMBO(NAME, BINDINGS, KEYPOS) \
+  combo_##NAME { \
+    timeout-ms = <40>; \
+    bindings = <BINDINGS>; \
+    key-positions = <KEYPOS>; \
+    layers = <0 1 2>; \
+  };
+#define STRINGIFY(x) #x
+#define EXPAND_AND_STRINGIFY(x) STRINGIFY(x)
+#define MACRO(NAME, BINDINGS) \
+  mcr_##NAME: mcr_##NAME { \
+    label = EXPAND_AND_STRINGIFY(mcr_##NAME); \
+    compatible = "zmk,behavior-macro"; \
+    #binding-cells = <0>; \
+    wait-ms = <20>; \
+    tap-ms = <10>; \
+    bindings = <BINDINGS>; \
+  };
+
+// Mod tap settings
 &mt {
-    tapping-term-ms = <200>; // This is the value already set by default
+    tapping-term-ms = <200>;   // hold for longer than this value, or press any other key while held, and it functions as a mod
 };
 
 /*
  * Defines to enable/disable features
  *
  * These defines allow us to conditionally enable and disable parts of the keymap config.
- *
  * For example, if we decide to build the firmware without the mouse features, we can
  * disable all the config options that rely on those forks and modules without having
  * to edit the entire keymap file manually every time.
@@ -30,8 +50,8 @@
   #include <behaviors/mouse_keys.dtsi>
 #endif
 
+// Store the trackpoint settings in a separate file to make organization easier
 #ifdef HAS_MOUSE_TP
-  // store the trackpoint settings in a separate file to make organization easier
   #include "include/mouse_tp.dtsi"
 #endif
 
@@ -49,9 +69,47 @@
   #define U_TOG_TP_SET &none
 #endif
 
+/ {
+    macros {
+        // Symbol macros and others
+        MACRO(deg, &macro_press &kp LALT &macro_tap &kp KP_N2 &kp KP_N4 &kp KP_N8 &macro_release &kp LALT)   // degree
+        MACRO(mu, &macro_press &kp LALT &macro_tap &kp KP_N2 &kp KP_N3 &kp KP_N0 &macro_release &kp LALT)    // mu
+        MACRO(eps, &macro_press &kp LALT &macro_tap &kp KP_N2 &kp KP_N3 &kp KP_N8 &macro_release &kp LALT)   // epsilon
+        MACRO(pi, &macro_press &kp LALT &macro_tap &kp KP_N2 &kp KP_N2 &kp KP_N7 &macro_release &kp LALT)    // pi
+        MACRO(sig, &macro_press &kp LALT &macro_tap &kp KP_N2 &kp KP_N2 &kp KP_N9 &macro_release &kp LALT)   // sigma
+        MACRO(plsmns, &macro_press &kp LALT &macro_tap &kp KP_N0 &kp KP_N1 &kp KP_N7 &kp KP_N7 &macro_release &kp LALT)   // plus minus symbol
+        MACRO(int, &macro_press &kp LSHFT &macro_tap &kp I &macro_release &kp LSHFT &macro_tap &kp N &kp T &kp E &kp R &kp F &kp E &kp R &kp O &kp M &kp E &kp T &kp E &kp R &kp N2 &kp RET)
+        MACRO(paren, &macro_tap &kp F2 &kp LPAR &kp RPAR &kp LEFT)   // double parenthesis
+
+        // Macros to move by whole words and select words
+        MACRO(prv_wrd, &macro_press &kp LCTRL &macro_tap &kp LEFT &macro_release &kp LCTRL)
+        MACRO(nxt_wrd, &macro_press &kp LCTRL &macro_tap &kp RIGHT &macro_release &kp LCTRL)
+        MACRO(sel_prv, &macro_press &kp LCTRL &kp LSHFT &macro_tap &kp LEFT &macro_release &kp LCTRL &kp LSHFT)
+        MACRO(sel_wrd, &macro_press &kp LCTRL &macro_tap &kp RIGHT &macro_press &kp LSHFT &macro_tap &kp LEFT &macro_release &kp LCTRL &kp LSHFT)
+        MACRO(sel_nxt, &macro_press &kp LCTRL &kp LSHFT &macro_tap &kp RIGHT &macro_release &kp LCTRL &kp LSHFT)
+
+        // Macros to type common decimal numbers in SolidWorks
+        MACRO(025, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N0 &kp KP_N2 &kp KP_N5 &macro_tap &kp RET)
+        MACRO(100, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1 &macro_tap &kp RET)
+        MACRO(125, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1 &kp KP_N2 &kp KP_N5 &macro_tap &kp RET)
+        MACRO(187, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1 &kp KP_N8 &kp KP_N7 &kp KP_N5 &macro_tap &kp RET)
+        MACRO(250, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N2 &kp KP_N5 &macro_tap &kp RET)
+        MACRO(375, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N3 &kp KP_N7 &kp KP_N5 &macro_tap &kp RET)
+        MACRO(500, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N5 &macro_tap &kp RET)
+        MACRO(625, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N6 &kp KP_N2 &kp KP_N5 &macro_tap &kp RET)
+        MACRO(750, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N7 &kp KP_N5 &macro_tap &kp RET)
+        MACRO(875, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N8 &kp KP_N7 &kp KP_N5 &macro_tap &kp RET)
+};
+
+//                         KEY POSITIONS
+// ╭────────────────────────────╮ ╭────────────────────────────╮
+// │  0   1   2   3   4   5     │ │     6   7   8   9   10  11 │
+// │ 12  13  14  15  16  17     │ │     18  19  20  21  22  23 │
+// │ 24  25  26  27  28  29 (41)| │(42) 30  31  32  33  34  35 │
+// ╰───────╮(36) 37  38  39  40 │ │ 43  44  45  46  (47)╭──────╯
+//         ╰────────────────────╯ ╰─────────────────────╯
 
 / {
-
   keymap {
     compatible = "zmk,keymap";
 
@@ -88,9 +146,9 @@
       >;
       sensor-bindings = <
         &inc_dec_kp LEFT RIGHT
-        &inc_dec_kp C_VOL_UP C_VOL_DN
-        &inc_dec_kp LEFT UP
-        &inc_dec_kp UP DOWN
+        &inc_dec_kp C_VOL_DN C_VOL_UP
+        &inc_dec_kp LEFT UP   // these do not work yet
+        &inc_dec_kp UP DOWN   // these do not work yet
         >;
     };
 
