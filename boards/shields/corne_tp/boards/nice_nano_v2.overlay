@@ -1,57 +1,59 @@
 #include <dt-bindings/led/led.h>
 
-&nice_view_spi {
-    cs-gpios = <&pro_micro 14 GPIO_ACTIVE_HIGH>;
-};
-
-// Firmware with alternative pins
-//
-// The #ifndef statement can safely be removed. It's only used in the example
-// zmk-config repo to create an additional firmware with alternative PIN
-// assignments, but since the alternative pins conflict with the underglow
-// pins, we disable it here.
-//
-// You can leave it or remove in your own zmk config. If you remove it, you
-// should also remove the entry in `zmk-config-example/build.yaml` that uses
-// it.
-
-#ifndef MOUSE_PS2_ALT_PINS
-
 &pinctrl {
+    spi1_default: spi1_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK,  0, 10)>,  /* D16 - CL/SCK  */
+                    <NRF_PSEL(SPIM_MOSI, 1, 11)>,  /* D14 - DA/MOSI */
+                    <NRF_PSEL(SPIM_MISO, 1, 11)>;  /* D14 - MISO (unused, same as MOSI) */
+        };
+    };
+    spi1_sleep: spi1_sleep {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK,  0, 10)>,
+                    <NRF_PSEL(SPIM_MOSI, 1, 11)>,
+                    <NRF_PSEL(SPIM_MISO, 1, 11)>;
+            low-power-enable;
+        };
+    };
+#ifndef MOUSE_PS2_ALT_PINS
     spi3_default: spi3_default {
         group1 {
             psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
         };
     };
-
     spi3_sleep: spi3_sleep {
         group1 {
             psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
             low-power-enable;
         };
     };
+#endif
 };
 
+nice_view_spi: &spi1 {
+    compatible = "nordic,nrf-spim";
+    status = "okay";
+    pinctrl-0 = <&spi1_default>;
+    pinctrl-1 = <&spi1_sleep>;
+    pinctrl-names = "default", "sleep";
+    cs-gpios = <&pro_micro 10 GPIO_ACTIVE_HIGH>;  /* D10 - CS */
+};
+
+#ifndef MOUSE_PS2_ALT_PINS
 &spi3 {
     compatible = "nordic,nrf-spim";
     status = "okay";
-
     pinctrl-0 = <&spi3_default>;
     pinctrl-1 = <&spi3_sleep>;
     pinctrl-names = "default", "sleep";
-
     led_strip: ws2812@0 {
         compatible = "worldsemi,ws2812-spi";
-
-        /* SPI */
-        reg = <0>; /* ignored, but necessary for SPI bindings */
+        reg = <0>;
         spi-max-frequency = <4000000>;
-
-        /* WS2812 */
-        chain-length = <10>; /* arbitrary; change at will */
+        chain-length = <10>;
         spi-one-frame = <0x70>;
         spi-zero-frame = <0x40>;
-
         color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
     };
 };
@@ -61,5 +63,4 @@
         zmk,underglow = &led_strip;
     };
 };
-
 #endif  // MOUSE_PS2_ALT_PINS
