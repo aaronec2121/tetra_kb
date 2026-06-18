@@ -145,7 +145,7 @@
             COMBO(cmb_up1, &kp UP, 27 28)        // up arrow by pressing c and v
             COMBO(cmb_dn1, &kp UP, 37 38)        // down arrow by pressing left and right
             COMBO(cmb_up2, &kp UP, 31 32)        // up arrow by pressing left and down (for use on right side)
-            COMBO(cmb_dn1, &kp UP, 45 46)        // down arrow by pressing left and right (for use on right side)
+            COMBO(cmb_dn2, &kp UP, 45 46)        // down arrow by pressing left and right (for use on right side)
             COMBO(cmb_int, &mcr_int, 9 10 11)
   };
 };
