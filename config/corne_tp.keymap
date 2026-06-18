@@ -109,18 +109,77 @@
 // ╰───────╮(36) 37  38  39  40 │ │ 43  44  45  46  (47)╭──────╯
 //         ╰────────────────────╯ ╰─────────────────────╯
 
+  combos {
+    compatible = "zmk,combos";
+
+// ╭────────────────────────────────╮   COMBOS   ╭───────────────────────────╮
+// │ _   _    _    _    _    _      │    with    │     _   _   _   _   _   _ │
+// │ _  .375 .500 .625 .750 .875    │ SPACE (40) │     _   _   _   _   _   _ │
+// │ _  .025 .100 .125 .187 .250 (─)│            │(─)  _   _   _   _   _   _ │
+// ╰───────╮  (_) PRSC  _    _    _ │            │ _   _   _   _  (_) ╭──────╯
+//         ╰────────────────────────╯            ╰────────────────────╯
+            COMBO(cmb_025, &mcr_025, 25 40)
+            COMBO(cmb_100, &mcr_100, 26 40)
+            COMBO(cmb_125, &mcr_125, 27 40)
+            COMBO(cmb_187, &mcr_187, 28 40)
+            COMBO(cmb_250, &mcr_250, 29 40)
+            COMBO(cmb_375, &mcr_375, 13 40)
+            COMBO(cmb_500, &mcr_500, 14 40)
+            COMBO(cmb_625, &mcr_625, 15 40)
+            COMBO(cmb_750, &mcr_750, 16 40)
+            COMBO(cmb_875, &mcr_875, 17 40)
+            COMBO(cmb_pscrn, &kp PSCRN, 37 40)
+
+// ╭─────────────────────────╮  OTHER   ╭───────────────────────────╮
+// │ _   _{bs}_{dl}_   _{+}_ │  COMBOS  │  _   _    _   _   _     _ │
+// │ _   _    _    _   _{-}_ ╰────╮ ╭───╯  _   _    _   _   _{RET}_ │
+// │ _   _    _{up}_   _{±}_    _ | | _    _   _{up}_   _   _     _ │
+// ╰──────╮   _{dn}_   _   _    _ │ │ _    _   _{dn}_   _ ╭─────────╯
+//        ╰───────────────────────╯ ╰─────────────────────╯
+            COMBO(cmb_bspc, &kp BSPC, 1 2)
+            COMBO(cmb_del, &kp DEL, 3 4)
+            COMBO(cmb_enter, &kp RET, 22 23)
+            COMBO(cmb_plus, &kp PLUS, 27 28)
+            COMBO(cmb_minus, &kp MINUS, 37 38)
+            COMBO(cmb_plsmns, &mcr_plsmns, 28 29)
+            COMBO(cmb_up1, &kp UP, 27 28)        // up arrow by pressing c and v
+            COMBO(cmb_dn1, &kp UP, 37 38)        // down arrow by pressing left and right
+            COMBO(cmb_up2, &kp UP, 31 32)        // up arrow by pressing left and down (for use on right side)
+            COMBO(cmb_dn1, &kp UP, 45 46)        // down arrow by pressing left and right (for use on right side)
+            COMBO(cmb_int, &mcr_int, 9 10 11)
+  };
+};
+
 / {
+    behaviors {
+        mo_tog: behavior_mo_tog {
+            compatible = "zmk,behavior-hold-tap";
+            label = "mo_tog";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&tog>;
+        };
+        td_Lshftcaps: td_Lshftcaps {
+            compatible = "zmk,behavior-tap-dance";
+            label = "td_Lshftcaps";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp LSHFT>, <&kp CAPS>;
+        };
+    };
+
   keymap {
     compatible = "zmk,keymap";
 
     base_layer {
-      /* ╭────────────────────────────────╮                ╭────────────────────────────────╮
-         | TAB   Q     W     E    R    T  |                |  Y    U    I    O    P    BSPC |
-         | SHFT  A     S     D    F    G  ╰───────╮ ╭───────╯  H    J    K    L    ;:   ' "  |
-         | CTRL  Z     X     C    V    B    C_PP  | | C_PP     N    M    ,    .    /?   SHFT |
-         ╰─────────╮ (HOME)  <-   ->  enter  space | | SPACE RAISE   <-   v   -> ╭────────────╯
-                            ctrl alt   nav  numpad |
-                   ╰──────────────────────────────╯ ╰───────────────────────────╯              */
+    // ╭────────────────────────────────╮                 ╭────────────────────────────────╮
+    // | TAB   Q     W     E    R    T  |                 |  Y    U    I    O    P    BSPC |
+    // | SHFT  A     S     D    F    G  ╰───────╮ ╭───────╯  H    J    K    L    ;:   ' "  |
+    // | CTRL  Z     X     C    V    B    C_PP  | | C_PP     N    M    ,    .    /?   SHFT |
+    // ╰─────────╮ (HOME)  <-   ->  enter space | | SPACE RAISE   <-   v   -> ╭────────────╯
+    //           |        ctrl alt   nav numpad |                             |
+    //           ╰─────────────────────────────╯ ╰────────────────────────────╯
       display-name = "base";
       bindings = <
         &kp TAB   &kp Q     &kp W    &kp E     &kp R       &kp T     &kp Y &kp U       &kp I          &kp O     &kp P     &kp BSPC
