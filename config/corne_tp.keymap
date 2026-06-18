@@ -84,7 +84,7 @@
         MACRO(paren, &macro_tap &kp F2 &kp LPAR &kp RPAR &kp LEFT)   // double parenthesis
         MACRO(in, &macro_tap &kp I &kp N)     // inches
         MACRO(mm, &macro_tap &kp M &kp M)     // millimeters
-        MACRO(altb, &macro_press &kp LALT &kp TAB &macro_release &kp LALT)   // alt+tab
+        MACRO(altb, &macro_press &kp LALT &macro_tap &kp TAB &macro_release &kp LALT)   // alt+tab
         MACRO(tilelt, &macro_press &kp LGUI &kp LEFT &macro_release &kp LGUI)   // tile left
         MACRO(tilert, &macro_press &kp LGUI &kp RIGHT &macro_release &kp LGUI)   // tile right
 
