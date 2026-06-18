@@ -4,15 +4,15 @@
     spi1_default: spi1_default {
         group1 {
             psels = <NRF_PSEL(SPIM_SCK,  0, 10)>,  /* D16 - CL/SCK  */
-                    <NRF_PSEL(SPIM_MOSI, 1, 11)>,  /* D14 - DA/MOSI */
-                    <NRF_PSEL(SPIM_MISO, 1, 11)>;  /* D14 - MISO (unused, same as MOSI) */
+                    <NRF_PSEL(SPIM_MOSI, 0, 9)>,  /* D14 - DA/MOSI */
+                    <NRF_PSEL(SPIM_MISO, 0, 9)>;  /* D14 - MISO (unused, same as MOSI) */
         };
     };
     spi1_sleep: spi1_sleep {
         group1 {
             psels = <NRF_PSEL(SPIM_SCK,  0, 10)>,
-                    <NRF_PSEL(SPIM_MOSI, 1, 11)>,
-                    <NRF_PSEL(SPIM_MISO, 1, 11)>;
+                    <NRF_PSEL(SPIM_MOSI, 0, 9)>,
+                    <NRF_PSEL(SPIM_MISO, 0, 9)>;
             low-power-enable;
         };
     };
@@ -37,7 +37,7 @@ nice_view_spi: &spi1 {
     pinctrl-0 = <&spi1_default>;
     pinctrl-1 = <&spi1_sleep>;
     pinctrl-names = "default", "sleep";
-    cs-gpios = <&pro_micro 10 GPIO_ACTIVE_HIGH>;  /* D10 - CS */
+    cs-gpios = <&pro_micro 14 GPIO_ACTIVE_HIGH>;  /* D14 - CS */
 };
 
 #ifndef MOUSE_PS2_ALT_PINS
