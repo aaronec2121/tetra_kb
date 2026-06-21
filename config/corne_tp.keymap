@@ -157,7 +157,7 @@
             COMBO(up2, &kp UP, 31 32)         // up arrow by pressing left and down (for use on right side)
             COMBO(dn2, &kp DOWN, 45 46)       // down arrow by pressing left and right (for use on right side)
             COMBO(int, &mcr_int, 9 10 11)
-            COMBO(mouse, &to 3, 44 45 46)     // go to mouse settings layer
+            COMBO(mouse, &to 4, 44 45 46)     // go to mouse settings layer
   };
 };
 
