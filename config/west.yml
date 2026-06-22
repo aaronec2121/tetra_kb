@@ -8,6 +8,8 @@ manifest:
       url-base: https://github.com/petejohanson
     - name: urob
       url-base: https://github.com/urob
+   - name: kevinpastor
+     url-base: https://github.com/kevinpastor
 
   projects:
     # zmk fork
@@ -58,5 +60,11 @@ manifest:
       remote: infused-kim
       revision: main
 
+    # Widget module
+    - name: nice-view-elemental
+      remote: kevinpastor
+      revision: main
+
+     
   self:
     path: config
