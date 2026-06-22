@@ -65,6 +65,7 @@
   #define U_THUMB_INNER &none
 #endif
 
+// if has_mouse_tp, that variable is a toggle layer top the mouse settings, otherwise it's nothing
 #ifdef HAS_MOUSE_TP
   #define U_TOG_TP_SET &tog MOUSE_TP_SET
 #else
@@ -85,8 +86,8 @@
         MACRO(in, &macro_tap &kp I &kp N)     // inches
         MACRO(mm, &macro_tap &kp M &kp M)     // millimeters
         MACRO(altb, &macro_press &kp LALT &macro_tap &kp TAB &macro_release &kp LALT)   // alt+tab
-        MACRO(tilelt, &macro_press &kp LGUI &kp LEFT &macro_release &kp LGUI)   // tile left
-        MACRO(tilert, &macro_press &kp LGUI &kp RIGHT &macro_release &kp LGUI)   // tile right
+        MACRO(tilelt, &macro_press &kp LGUI &macro_tap &kp LEFT &macro_release &kp LGUI)   // tile left
+        MACRO(tilert, &macro_press &kp LGUI &macro_tap &kp RIGHT &macro_release &kp LGUI)   // tile right
 
         // Macros to move by whole words and select words
         MACRO(prv_wrd, &macro_press &kp LCTRL &macro_tap &kp LEFT &macro_release &kp LCTRL)
@@ -96,16 +97,16 @@
         MACRO(sel_nxt, &macro_press &kp LCTRL &kp LSHFT &macro_tap &kp RIGHT &macro_release &kp LCTRL &kp LSHFT)
 
         // Macros to type common decimal numbers in SolidWorks
-        MACRO(025, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N0 &kp KP_N2 &kp KP_N5 &macro_tap &kp RET)
-        MACRO(100, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1 &macro_tap &kp RET)
-        MACRO(125, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1 &kp KP_N2 &kp KP_N5 &macro_tap &kp RET)
-        MACRO(187, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1 &kp KP_N8 &kp KP_N7 &kp KP_N5 &macro_tap &kp RET)
-        MACRO(250, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N2 &kp KP_N5 &macro_tap &kp RET)
-        MACRO(375, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N3 &kp KP_N7 &kp KP_N5 &macro_tap &kp RET)
-        MACRO(500, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N5 &macro_tap &kp RET)
-        MACRO(625, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N6 &kp KP_N2 &kp KP_N5 &macro_tap &kp RET)
-        MACRO(750, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N7 &kp KP_N5 &macro_tap &kp RET)
-        MACRO(875, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N8 &kp KP_N7 &kp KP_N5 &macro_tap &kp RET)
+        MACRO(025, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N0 &kp KP_N2 &kp KP_N5)
+        MACRO(100, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1)
+        MACRO(125, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1 &kp KP_N2 &kp KP_N5)
+        MACRO(187, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1 &kp KP_N8 &kp KP_N7 &kp KP_N5)
+        MACRO(250, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N2 &kp KP_N5)
+        MACRO(375, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N3 &kp KP_N7 &kp KP_N5)
+        MACRO(500, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N5)
+        MACRO(625, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N6 &kp KP_N2 &kp KP_N5)
+        MACRO(750, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N7 &kp KP_N5)
+        MACRO(875, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N8 &kp KP_N7 &kp KP_N5)
 };
 
 //                         KEY POSITIONS
@@ -122,7 +123,7 @@
 // ╭────────────────────────────────╮   COMBOS   ╭───────────────────────────╮
 // │ _   _    _    _    _    _      │    with    │     _   _   _   _   _   _ │
 // │ _  .375 .500 .625 .750 .875    │ SPACE (40) │     _   _   _   _   _   _ │
-// │ _  .025 .100 .125 .187 .250 (─)│            │(─)  _   _   _   _   _   _ │
+// │ _  .025 .100 .125 .187 .250 (_)│            │(_)  _   _   _   _   _   _ │
 // ╰───────╮  (_) PRSC  _    _    _ │            │ _   _   _   _  (_) ╭──────╯
 //         ╰────────────────────────╯            ╰────────────────────╯
             COMBO(cmb_025, &mcr_025, 25 40)
@@ -189,7 +190,7 @@
       // ╭───────────────────────────────╮                 ╭────────────────────────────────╮
       // | TAB   Q     W     E    R   T  |                 |  Y    U    I    O    P    BSPC |
       // | SHFT  A     S     D    F   G  ╰───────╮ ╭───────╯  H    J    K    L    ;:   ' "  |
-      // | CTRL  Z     X     C    V   B   (C_PP) | | (prev)   N    M    ,    .    /?   SHFT |
+      // | CTRL  Z     X     C    V   B    (PP)  | | (prev)   N    M    ,    .    /?   SHFT |
       // ╰─────────╮ (altb)  <-  ->  ENTER SPACE | | SPACE ENTER   <-  -> (next)╭───────────╯
       //           ╰────────ctrl alt  nav numpad─╯ ╰─numpad nav─────────────────╯
 
@@ -209,17 +210,17 @@
     numpad_layer {
       display-name = "numpad";
       bindings = <
-      // ╭─────────────────────────────╮              ╭────────────────────────────╮
-      // | TAB   =     7   8   9       |              |  7   8   9   (    )   BSPC |
-      // | SHFT  _     4   5   6   in  ╰───────╮ ╭────╯  4   5   6   {    }        |
-      // | CTRL        1   2   3   mm     ( )  | | ( )   1   2   3   [    ]        |
-      // ╰─────────╮  ( )  0   .  ENTER numpad | | SPACE 0   . ENTER ( )╭──────────╯
-      //           ╰───────────────────────────╯ ╰──────────────────────╯
+      // ╭────────────────────────────╮          ╭──────────────────────────╮
+      // | TAB   =    _    7   8   9  |          |  7   8   9   (   )  BSPC |
+      // | SHFT  +    -    4   5   6  ╰────╮ ╭───╯  4   5   6   {   }       |
+      // | CTRL  *    /    1   2   3   ( ) | | ( )  1   2   3   [   ]       |
+      // ╰────────╮ (altb) 0   .  ENT   ●  | |  ●   0   .  ENT ( ) ╭────────╯
+      //          ╰────────────────────────╯ ╰─────────────────────╯
 
-        &kp TAB   &kp EQUAL &kp N7 &kp N8  &kp N9  &none                  &kp N7 &kp N8 &kp N9  &kp LPAR &kp RPAR &trans
-        &kp LSHFT &kp UNDER &kp N4 &kp N5  &kp N6  &mcr_in                &kp N4 &kp N5 &kp N6  &kp LBKT &kp RBKT &none
-        &kp LCTRL &none     &kp N1 &kp N2  &kp N3  &mcr_mm                &kp N1 &kp N2 &kp N3  &kp LBRC &kp RBRC &none
-                  &trans    &kp N0 &kp DOT &kp RET &trans &trans   &trans &trans &kp N0 &kp DOT &kp RET &trans
+        &kp TAB   &kp EQUAL &kp UNDER &kp N7  &kp N8  &kp N9                  &kp N7 &kp N8 &kp N9  &kp LPAR &kp RPAR &trans
+        &kp LSHFT &kp PLUS  &kp MINUS &kp N4  &kp N5  &kp N6                &kp N4 &kp N5 &kp N6  &kp LBKT &kp RBKT &none
+        &kp LCTRL &kp STAR  &kp SLASH &kp N1  &kp N2  &kp N3                &kp N1 &kp N2 &kp N3  &kp LBRC &kp RBRC &none
+                  &trans    &kp N0    &kp DOT &kp RET &trans &trans   &trans &trans &kp N0 &kp DOT &kp RET &trans
       >;
       sensor-bindings = <
         &inc_dec_kp LEFT RIGHT
@@ -232,16 +233,16 @@
     navigation_layer {
       display-name = "navigation";
       bindings = <
-      // ╭─────────────────────────────╮              ╭────────────────────────────╮
-      // | TAB   =     7   8   9       |              |  7   8   9   (    )   BSPC |
-      // | SHFT  _     4   5   6   in  ╰───────╮ ╭────╯  4   5   6   {    }        |
-      // | CTRL        1   2   3   mm     ( )  | | ( )   1   2   3   [    ]        |
-      // ╰─────────╮  ( )  0   .  ENTER numpad | | SPACE 0   . ENTER ( )╭──────────╯
-      //           ╰───────────────────────────╯ ╰──────────────────────╯
+      // ╭────────────────────────────╮               ╭─────────────────────────────╮
+      // | TAB   1    2    3   4   5  |               |  6    7    8    9    0   `  |
+      // | SHFT  !    @    #   $   %  ╰──────╮ ╭──────╯  ^    &    *    (    )      |
+      // | CTRL GUI  <-    ^   v   ->  (Pwr) | | (RGB)  hue- hue+ sat- sat+ br- br+ |
+      // ╰────────╮ (altb) TL  TR  ●   SPACE | | SPACE   ●    TL   TR (Eff) ╭───────╯
+      //          ╰──────────────────────────╯ ╰────────────────────────────╯
 
-        &trans &kp N1 &kp N2 &kp N3   &kp N4   &kp N5                                           &kp N6 &kp N7     &kp N8    &kp N9   &kp N0 &kp GRAVE
-        &trans &none  &none  &none    &kp HOME &kp END                                          &kp HOME &kp END  &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI
-        &trans &none  &none  &kp LEFT &kp DOWN &kp RIGHT                                        &kp LEFT &kp DOWN &kp RIGHT &kp LGUI &rgb_ug RGB_BRD  &rgb_ug RGB_BRI
+        &trans &kp N1   &kp N2   &kp N3   &kp N4   &kp N5                                &kp N6    &kp N7   &kp N8    &kp N9  &kp N0   &kp GRAVE
+        &trans &kp EXCL &kp AT   &kp HASH &kp DLLR &kp PRCNT                             &kp CARET &kp AMPS &kp STAR &kp LPAR &kp RPAR &none
+        &trans &kp LGUI &kp LEFT &kp UP   &kp DOWN &kp RIGHT                             &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI &rgb_ug RGB_BRD  &rgb_ug RGB_BRI
         &trans &mcr_tilelt &mcr_tilert &trans &trans &ext_power EP_TOG  &rgb_ug RGB_TOG &trans &trans &mcr_tilelt &mcr_tilert &rgb_ug RGB_EFF
       >;
       // encoder order: RH Left, RH Right, LH Left, LH Right
@@ -295,9 +296,9 @@
         // |   -    -   -   -   -   -  ( ) | | ( )  -   -   -   -   -   -   |
         // ╰────────╮  ( )  -   -   -   -  | |  -   -   -   -  ( ) ╭────────╯
         //          ╰──────────────────────╯ ╰─────────────────────╯
-        U_TOG_TP_SET U_TOG_TP_SET &none SnsDec SnsInc PtsInc     PtsInc U_MSS_TP_S_D U_MSS_TP_S_I &none U_TOG_TP_SET U_TOG_TP_SET
-                      TpRst TpRst &none InrDec InrInc PtsDec     PtsDec U_MSS_TP_NI_D U_MSS_TP_NI_I &none U_MSS_RESET U_MSS_RESET
-                      TpLog TpLog &none MxSDec MxSInc &none      &none U_MSS_TP_V6_D U_MSS_TP_V6_I &none TpLog TpLog
+        U_TOG_TP_SET U_TOG_TP_SET &none SnsDec SnsInc PtsInc     PtsInc SnsDec SnsInc &none U_TOG_TP_SET U_TOG_TP_SET
+                      TpRst TpRst &none InrDec InrInc PtsDec     PtsDec InrDec InrInc &none TpRst TpRst
+                      TpLog TpLog &none MxSDec MxSInc &none      &none  MxSDec MxSInc &none TpLog TpLog
         &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &to 1
         // !!!!! return to base layer upon pressing the right encoder !!!!!
       >;
