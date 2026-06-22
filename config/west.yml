@@ -8,8 +8,8 @@ manifest:
       url-base: https://github.com/petejohanson
     - name: urob
       url-base: https://github.com/urob
-   - name: kevinpastor
-     url-base: https://github.com/kevinpastor
+    - name: kevinpastor
+      url-base: https://github.com/kevinpastor
 
   projects:
     # zmk fork
