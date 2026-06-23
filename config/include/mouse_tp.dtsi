@@ -99,12 +99,12 @@
     &mouse_ps2 {
 
       // How sensitive the TP is (Default: 128)
-      // tp-sensitivity = <128>;
+      tp-sensitivity = <256>;
 
 
       // The maximum mouse movement speed the TP will accelarate to
       // (Default: 97)
-      // tp-val6-upper-speed = <97>;
+      tp-val6-upper-speed = <150>;
 
 
       // Negative Inertia (Default: 6)
@@ -114,8 +114,8 @@
 
       // Enable clicking by tapping on the TP.
       // Not all TPs support this.
-      // tp-press-to-select;
-      // tp-press-to-select-threshold = <10>;
+      tp-press-to-select;
+      tp-press-to-select-threshold = <10>;
 
 
       // Adjust axis settings on the TP
@@ -131,9 +131,7 @@
 
 
       // Set sampling rate
-      //
-      // The frequency at which the mouse samples and sends data (in hz).
-      // The default rate is 100. You can try lowering it if you experience
+      // The default rate is 100Hz. You can try lowering it if you experience
       // connection errors.
       //
       // Higher values than 100 are no improvement in my experience, but will
