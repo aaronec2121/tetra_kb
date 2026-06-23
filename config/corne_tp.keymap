@@ -249,7 +249,7 @@
     };
 
 
-#ifdef HAS_MOUSE_KEYS
+/*#ifdef HAS_MOUSE_KEYS
     MouseKeys_layer {
       display-name = "MouseKeys";
       bindings = <
@@ -270,7 +270,7 @@
         &inc_dec_kp C_VOL_DN C_VOL_UP
         >;
     };
-#endif
+#endif*/
 
 #ifdef HAS_MOUSE_TP
     // Automatically activated when the mouse or trackpoint moves.
