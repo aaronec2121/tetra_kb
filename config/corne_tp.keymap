@@ -303,7 +303,7 @@
         U_TOG_TP_SET U_TOG_TP_SET &none SnsDec SnsInc PtsInc     PtsInc SnsDec SnsInc &none U_TOG_TP_SET U_TOG_TP_SET
                       TpRst TpRst &none InrDec InrInc PtsDec     PtsDec InrDec InrInc &none TpRst TpRst
                       TpLog TpLog &none MxSDec MxSInc &none      &none  MxSDec MxSInc &none TpLog TpLog
-        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &to 1
+        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &to 0
         // !!!!! return to base layer upon pressing the right encoder !!!!!
       >;
       // encoder order: RH Left, RH Right, LH Left, LH Right
