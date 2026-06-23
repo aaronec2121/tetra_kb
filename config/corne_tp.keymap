@@ -158,7 +158,7 @@
             COMBO(up2, &kp UP, 31 32)         // up arrow by pressing left and down (for use on right side)
             COMBO(dn2, &kp DOWN, 45 46)       // down arrow by pressing left and right (for use on right side)
             COMBO(int, &mcr_int, 9 10 11)
-            COMBO(mouse, &to 4, 44 45 46)     // go to mouse settings layer
+            COMBO(mouse, &to 4, 30 35)       // go to mouse settings layer
   };
 };
 
@@ -209,15 +209,15 @@
       display-name = "numpad";
       bindings = <
       // ╭────────────────────────────╮          ╭──────────────────────────╮
-      // | TAB   =    _    7   8   9  |          |  7   8   9   (   )  BSPC |
-      // | SHFT  +    -    4   5   6  ╰────╮ ╭───╯  4   5   6   {   }       |
-      // | CTRL  *    /    1   2   3   ( ) | | ( )  1   2   3   [   ]       |
+      // | TAB   =    7   8   9   +   |          |  7   8   9   (   )  BSPC |
+      // | SHFT  _    4   5   6   *   ╰────╮ ╭───╯  4   5   6   {   }       |
+      // | CTRL       1   2   3   /    ( ) | | ( )  1   2   3   [   ]       |
       // ╰────────╮ (altb) 0   .  ENT   ●  | |  ●   0   .  ENT ( ) ╭────────╯
       //          ╰────────────────────────╯ ╰─────────────────────╯
 
-        &kp TAB   &kp EQUAL &kp UNDER &kp N7  &kp N8  &kp N9                  &kp N7 &kp N8 &kp N9  &kp LPAR &kp RPAR &trans
-        &kp LSHFT &kp PLUS  &kp MINUS &kp N4  &kp N5  &kp N6                &kp N4 &kp N5 &kp N6  &kp LBKT &kp RBKT &none
-        &kp LCTRL &kp STAR  &kp SLASH &kp N1  &kp N2  &kp N3                &kp N1 &kp N2 &kp N3  &kp LBRC &kp RBRC &none
+        &kp TAB   &kp EQUAL &kp N7  &kp N8  &kp N9 &kp PLUS                  &kp N7 &kp N8 &kp N9  &kp LPAR &kp RPAR &trans
+        &kp LSHFT &kp UNDER &kp N4  &kp N5  &kp N6 &kp STAR                  &kp N4 &kp N5 &kp N6  &kp LBKT &kp RBKT &none
+        &kp LCTRL &none     &kp N1  &kp N2  &kp N3 &kp SLASH                 &kp N1 &kp N2 &kp N3  &kp LBRC &kp RBRC &none
                   &trans    &kp N0    &kp DOT &kp RET &trans &trans   &trans &trans &kp N0 &kp DOT &kp RET &trans
       >;
       sensor-bindings = <
