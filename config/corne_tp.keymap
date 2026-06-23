@@ -97,16 +97,16 @@
         MACRO(sel_nxt, &macro_press &kp LCTRL &kp LSHFT &macro_tap &kp RIGHT &macro_release &kp LCTRL &kp LSHFT)
 
         // Macros to type common decimal numbers in SolidWorks
-        MACRO(025, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N0 &kp KP_N2 &kp KP_N5)
-        MACRO(100, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1)
-        MACRO(125, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1 &kp KP_N2 &kp KP_N5)
-        MACRO(187, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1 &kp KP_N8 &kp KP_N7 &kp KP_N5)
-        MACRO(250, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N2 &kp KP_N5)
-        MACRO(375, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N3 &kp KP_N7 &kp KP_N5)
-        MACRO(500, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N5)
-        MACRO(625, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N6 &kp KP_N2 &kp KP_N5)
-        MACRO(750, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N7 &kp KP_N5)
-        MACRO(875, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N8 &kp KP_N7 &kp KP_N5)
+        //MACRO(025, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N0 &kp KP_N2 &kp KP_N5)
+        //MACRO(100, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1)
+        //MACRO(125, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1 &kp KP_N2 &kp KP_N5)
+        //MACRO(187, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1 &kp KP_N8 &kp KP_N7 &kp KP_N5)
+        //MACRO(250, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N2 &kp KP_N5)
+        //MACRO(375, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N3 &kp KP_N7 &kp KP_N5)
+        //MACRO(500, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N5)
+        //MACRO(625, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N6 &kp KP_N2 &kp KP_N5)
+        //MACRO(750, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N7 &kp KP_N5)
+        //MACRO(875, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N8 &kp KP_N7 &kp KP_N5)
 };
 
 //                         KEY POSITIONS
@@ -126,16 +126,16 @@
 // │ _  .025 .100 .125 .187 .250 (_)│            │(_)  _   _   _   _   _   _ │
 // ╰───────╮  (_) PRSC  _    _    _ │            │ _   _   _   _  (_) ╭──────╯
 //         ╰────────────────────────╯            ╰────────────────────╯
-            COMBO(cmb_025, &mcr_025, 25 40)
-            COMBO(cmb_100, &mcr_100, 26 40)
-            COMBO(cmb_125, &mcr_125, 27 40)
-            COMBO(cmb_187, &mcr_187, 28 40)
-            COMBO(cmb_250, &mcr_250, 29 40)
-            COMBO(cmb_375, &mcr_375, 13 40)
-            COMBO(cmb_500, &mcr_500, 14 40)
-            COMBO(cmb_625, &mcr_625, 15 40) 
-            COMBO(cmb_750, &mcr_750, 16 40)
-            COMBO(cmb_875, &mcr_875, 17 40)
+            //COMBO(cmb_025, &mcr_025, 25 40)
+            //COMBO(cmb_100, &mcr_100, 26 40)
+            //COMBO(cmb_125, &mcr_125, 27 40)
+            //COMBO(cmb_187, &mcr_187, 28 40)
+            //COMBO(cmb_250, &mcr_250, 29 40)
+            //COMBO(cmb_375, &mcr_375, 13 40)
+            //COMBO(cmb_500, &mcr_500, 14 40)
+            //COMBO(cmb_625, &mcr_625, 15 40) 
+            //COMBO(cmb_750, &mcr_750, 16 40)
+            //COMBO(cmb_875, &mcr_875, 17 40)
             COMBO(cmb_pscrn, &kp PSCRN, 37 40)
 
 // ╭─────────────────────────╮  OTHER   ╭───────────────────────────╮
