@@ -98,8 +98,8 @@
 
     &mouse_ps2 {
 
-      // How sensitive the TP is (Default: 128)
-      tp-sensitivity = <1024>;
+      // How sensitive the TP is (Default: 128 Range: 0-254)
+      tp-sensitivity = <254>;
 
 
       // The maximum mouse movement speed the TP will accelarate to
@@ -115,7 +115,7 @@
       // Enable clicking by tapping on the TP.
       // Not all TPs support this.
       tp-press-to-select;
-      tp-press-to-select-threshold = <10>;
+      tp-press-to-select-threshold = <8>;
 
 
       // Adjust axis settings on the TP
