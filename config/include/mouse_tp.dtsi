@@ -8,9 +8,7 @@
   // without needing to recompile the firmware.
   //
   // The values will be logged and saved in the config on the controller flash
-  // after 60s (CONFIG_ZMK_SETTINGS_SAVE_DEBOUNCE).
-  //
-  // On boot the settings will be restored again.
+  // after 60s (CONFIG_ZMK_SETTINGS_SAVE_DEBOUNCE). On boot the settings will be restored again.
   //
   // If you prefer a more explicit way of configuration, you can also hardcode
   // these settings in `&mouse_ps2`.
@@ -21,53 +19,42 @@
   // the ones stored in the flash using the key codes.
 
 
-  // How sensitive the trackpoint is
-  #define SnsInc &mms MS_TP_SENSITIVITY_INCR  // Formerly U_MSS_TP_S_I
-  #define SnsDec &mms MS_TP_SENSITIVITY_DECR  // Formerly U_MSS_TP_S_D
+  // trackpoint sensitivity
+  #define SnsInc &mms MS_TP_SENSITIVITY_INCR      // Formerly U_MSS_TP_S_I
+  #define SnsDec &mms MS_TP_SENSITIVITY_DECR      // Formerly U_MSS_TP_S_D
 
-  // The maximum speed the trackpoint will accelerate to
-  #define MxSInc &mms MS_TP_VALUE6_INCR  // Formerly U_MSS_TP_V6_I
-  #define MxSDec &mms MS_TP_VALUE6_DECR  // Formerly U_MSS_TP_V6_D
+  // trackpoint max speed
+  #define MxSInc &mms MS_TP_VALUE6_INCR           // Formerly U_MSS_TP_V6_I
+  #define MxSDec &mms MS_TP_VALUE6_DECR           // Formerly U_MSS_TP_V6_D
 
-  // I am not quite sure tbh... default seems fine.
-  #define InrInc &mms MS_TP_NEG_INERTIA_INCR  // Formerly U_MSS_TP_NI_I
-  #define InrDec &mms MS_TP_NEG_INERTIA_DECR  // Formerly U_MSS_TP_NI_D
-
+  // inertia
+  #define InrInc &mms MS_TP_NEG_INERTIA_INCR      // Formerly U_MSS_TP_NI_I
+  #define InrDec &mms MS_TP_NEG_INERTIA_DECR      // Formerly U_MSS_TP_NI_D
 
   // How hard you have to press to activate the "Press To Select" feature that
-  // lets you tap or press on the trackpoint to click.
-  //
-  // Not all trackpoints support it and you have to enable
-  // `tp-press-to-select;` in `&mouse_ps2` first.
-  #define PtsInc &mms MS_TP_PTS_THRESHOLD_INCR  // Formerly U_MSS_TP_PT_I
-  #define PtsDec &mms MS_TP_PTS_THRESHOLD_DECR  // Formerly U_MSS_TP_PT_D
-
+  // lets you tap or press on the trackpoint to click. Not all trackpoints
+  // support it and you have to enable `tp-press-to-select;` in `&mouse_ps2` first.
+  #define PtsInc &mms MS_TP_PTS_THRESHOLD_INCR    // Formerly U_MSS_TP_PT_I
+  #define PtsDec &mms MS_TP_PTS_THRESHOLD_DECR    // Formerly U_MSS_TP_PT_D
 
   // If you mess up the settings, you can use this key code to clear the
   // settings from flash and re-set the default values on the TP.
-  //
   // Make sure to wait at least CONFIG_ZMK_SETTINGS_SAVE_DEBOUNCE seconds (60
   // by default) before restarting the board to ensure the settings are
   // written to flash storage.
-  #define TpRst   &mms MS_RESET  // Formerly U_MSS_RESET
-
+  #define TpRst   &mms MS_RESET                   // Formerly U_MSS_RESET
 
   // If you prefer to set the settings in `&mouse_ps2`, you can use the key
   // codes above to find the settings you like the most and then press this
   // key code to output the settings to the log.
   //
   // Then you can add those values to `&mouse_ps2`
-  #define TpLog     &mms MS_LOG  // Formerly MS_LOG
+  #define TpLog     &mms MS_LOG                   // Formerly MS_LOG
 
 
   // Only apply these settings on the side that has the TP connected
   // (usually the right side)
   #ifdef MOUSE_PS2_DT_PRESENT
-
-   /*
-    * Input Listener Config
-    */
-
     &mouse_ps2_input_listener {
 
       // Adjust pointing device axes.
@@ -80,7 +67,7 @@
 
       // Set the layer that should automatically activate when the mouse is
       // moving.
-      layer-toggle = <MOUSE_TP>;
+      layer-toggle = <TP_layer>;
 
       // How long the mouse needs to move for before the layer is activated (to
       // avoid accidental activations while typing) (Default: 250)
@@ -97,38 +84,30 @@
     */
 
     &mouse_ps2 {
-
       // How sensitive the TP is (Default: 128 Range: 0-254)
       tp-sensitivity = <254>;
-
 
       // The maximum mouse movement speed the TP will accelarate to
       // (Default: 97)
       tp-val6-upper-speed = <600>;
 
-
       // Negative Inertia (Default: 6)
       // Makes the TP feel more responsive and "overshoot" less.
       // tp-neg-inertia = <6>;
 
-
       // Enable clicking by tapping on the TP.
       // Not all TPs support this.
       tp-press-to-select;
-      tp-press-to-select-threshold = <8>;
-
+      tp-press-to-select-threshold = <8>;  // press to select sensitivity
 
       // Adjust axis settings on the TP
       // Works only on some trackpoints, but may be properly considered by the
       // trackpoint's acceleration features (which may or may not have an
-      // impact).
-      //
-      // Alternatively consider achieving the same effect using the
-      //  `input-listener` settings below.
+      // impact). Alternatively consider achieving the same effect using the
+      // `input-listener` settings below.
       // tp-xy-swap;
       tp-x-invert;
       // tp-y-invert;
-
 
       // Set sampling rate
       // The default rate is 100Hz. You can try lowering it if you experience
@@ -140,18 +119,15 @@
       // These values are allowed: 10,20,40,60,80,100,200
       // sampling-rate = <60>;
 
-
       // Disables clicking.
       // Useful when using the PS2 GPIO driver that is prone to
       // erros in transmissions to reduce accidental clicks.
       // disable-clicking;
 
-
       // Enable scroll wheel
       // For mouse devices supporting the Intellimouse extension. Not relevant
       // for trackpoints
       // scroll-mode;
-
     };
 
     // Enable PS/2 Mouse Devices
