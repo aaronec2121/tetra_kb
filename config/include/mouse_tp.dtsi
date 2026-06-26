@@ -79,10 +79,6 @@
     };
 
 
-   /*
-    * Mouse Driver Settings
-    */
-
     &mouse_ps2 {
       // How sensitive the TP is (Default: 128 Range: 0-254)
       tp-sensitivity = <254>;
