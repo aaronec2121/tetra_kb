@@ -265,16 +265,16 @@
     MouseSettings_layer {
       display-name = "Mouse TP Set";
       bindings = <
-        // ╭──────────────────────────╮           ╭─────────────────────────╮
-        // |   -    -   -   -   -   - |           | -   -   -   -   -   -   |
-        // |   -    -   -   -   -   - ╰────╮ ╭────╯ -   -   -   -   -   -   |
-        // |   -    -   -   -   -   -  ( ) | | ( )  -   -   -   -   -   -   |
-        // ╰────────╮  ( )  -   -   -   -  | |  -   -   -   -  (1) ╭────────╯     !!!!! return to base layer upon pressing the right encoder !!!!!
-        //          ╰──────────────────────╯ ╰─────────────────────╯
-        U_TOG_TP_SET U_TOG_TP_SET &none SnsDec SnsInc PtsInc     PtsInc SnsDec SnsInc &none U_TOG_TP_SET U_TOG_TP_SET
-                      TpRst TpRst &none InrDec InrInc PtsDec     PtsDec InrDec InrInc &none TpRst TpRst
-                      TpLog TpLog &none MxSDec MxSInc &none      &none  MxSDec MxSInc &none TpLog TpLog
-        &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &to 0
+        // ╭────────────────────────────╮           ╭───────────────────────────╮
+        // | Reset  -   -   -   -  Pts+ |           | Sns+ Inr+  -   -   -  Log |
+        // |   -    -   -   -   -  Pts- ╰────╮ ╭────╯ Sns- Inr-  -   -   -   -  |
+        // |   -    -   -   -   -   -    ( ) | | ( )  -     -    -   -   -   -  |
+        // ╰────────╮  ( )  -   -   -     -  | |  -   -     -    -  (0) ╭───────╯     !!!!! return to base layer upon pressing the right encoder !!!!!
+        //          ╰────────────────────────╯ ╰────────────────────────╯
+        TpRst  &none &none &none &none PtsInc     SnsInc InrInc MxSInc &none &none TpLog
+        &none  &none &none &none &none PtsDec     SnsDec InrDec MxSDec &none &none &none
+        &none  &none &none &none &none &none      &none  &none  &none  &none &none &none
+        &trans &none &none &none &none &trans     &trans &none  &none  &none &none &to 0
       >;
       // encoder order: RH Left, RH Right, LH Left, LH Right
       sensor-bindings = <
