@@ -6,9 +6,9 @@
 
 #define base 0
 #define numpad 1
-#define navigation 2
-#define MOUSE_TP 3
-#define MOUSE_TP_SET 4
+#define numrow_layer 2
+#define TP_layer 3
+#define MouseSettings_layer 4
 
 // This defines a special way of defining combos that makes them way more compact
 #define COMBO(NAME, BINDINGS, KEYPOS) \
@@ -65,13 +65,6 @@
   #define U_THUMB_INNER &none
 #endif
 
-// if has_mouse_tp, that variable is a toggle layer top the mouse settings, otherwise it's nothing
-#ifdef HAS_MOUSE_TP
-  #define U_TOG_TP_SET &tog MOUSE_TP_SET
-#else
-  #define U_TOG_TP_SET &none
-#endif
-
 / {
     macros {
         // Symbol macros and others
@@ -90,11 +83,11 @@
         MACRO(tilert, &macro_press &kp LGUI &macro_tap &kp RIGHT &macro_release &kp LGUI)   // tile right
 
         // Macros to move by whole words and select words
-        MACRO(prv_wrd, &macro_press &kp LCTRL &macro_tap &kp LEFT &macro_release &kp LCTRL)
-        MACRO(nxt_wrd, &macro_press &kp LCTRL &macro_tap &kp RIGHT &macro_release &kp LCTRL)
-        MACRO(sel_prv, &macro_press &kp LCTRL &kp LSHFT &macro_tap &kp LEFT &macro_release &kp LCTRL &kp LSHFT)
-        MACRO(sel_wrd, &macro_press &kp LCTRL &macro_tap &kp RIGHT &macro_press &kp LSHFT &macro_tap &kp LEFT &macro_release &kp LCTRL &kp LSHFT)
-        MACRO(sel_nxt, &macro_press &kp LCTRL &kp LSHFT &macro_tap &kp RIGHT &macro_release &kp LCTRL &kp LSHFT)
+        //MACRO(prv_wrd, &macro_press &kp LCTRL &macro_tap &kp LEFT &macro_release &kp LCTRL)
+        //MACRO(nxt_wrd, &macro_press &kp LCTRL &macro_tap &kp RIGHT &macro_release &kp LCTRL)
+        //MACRO(sel_prv, &macro_press &kp LCTRL &kp LSHFT &macro_tap &kp LEFT &macro_release &kp LCTRL &kp LSHFT)
+        //MACRO(sel_wrd, &macro_press &kp LCTRL &macro_tap &kp RIGHT &macro_press &kp LSHFT &macro_tap &kp LEFT &macro_release &kp LCTRL &kp LSHFT)
+        //MACRO(sel_nxt, &macro_press &kp LCTRL &kp LSHFT &macro_tap &kp RIGHT &macro_release &kp LCTRL &kp LSHFT)
 
         // Macros to type common decimal numbers in SolidWorks
         //MACRO(025, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N0 &kp KP_N2 &kp KP_N5)
@@ -120,23 +113,19 @@
   combos {
     compatible = "zmk,combos";
 
-// ╭────────────────────────────────╮   COMBOS   ╭───────────────────────────╮
-// │ _   _    _    _    _    _      │    with    │     _   _   _   _   _   _ │
-// │ _  .375 .500 .625 .750 .875    │ SPACE (40) │     _   _   _   _   _   _ │
-// │ _  .025 .100 .125 .187 .250 (_)│            │(_)  _   _   _   _   _   _ │
-// ╰───────╮  (_) PRSC  _    _    _ │            │ _   _   _   _  (_) ╭──────╯
-//         ╰────────────────────────╯            ╰────────────────────╯
-            //COMBO(cmb_025, &mcr_025, 25 40)
-            //COMBO(cmb_100, &mcr_100, 26 40)
-            //COMBO(cmb_125, &mcr_125, 27 40)
-            //COMBO(cmb_187, &mcr_187, 28 40)
-            //COMBO(cmb_250, &mcr_250, 29 40)
-            //COMBO(cmb_375, &mcr_375, 13 40)
-            //COMBO(cmb_500, &mcr_500, 14 40)
-            //COMBO(cmb_625, &mcr_625, 15 40) 
-            //COMBO(cmb_750, &mcr_750, 16 40)
-            //COMBO(cmb_875, &mcr_875, 17 40)
+// ╭───────────────────────────────╮   COMBOS   ╭───────────────────────────╮
+// │ _   _    _   {=} {_}   _      │    with    │     _   _   _   _   _   _ │
+// │ _   _    _   {+} {-}   _      │ SPACE (40) │     _   _   _   _   _   _ │
+// │ _   _    _   {*} {/}   _   (_)│            │(_)  _   _   _   _   _   _ │
+// ╰───────╮  (_) PRSC _    _    _ │            │ _   _   _   _  (_) ╭──────╯
+//         ╰───────────────────────╯            ╰────────────────────╯
             COMBO(cmb_pscrn, &kp PSCRN, 37 40)
+            COMBO(cmb_equal, &kp EQUAL, 3 40)
+            COMBO(cmb_under, &kp UNDER, 4 40)
+            COMBO(cmb_plus1, &kp PLUS, 15 40)
+            COMBO(cmb_minus1, &kp MINUS, 16 40)
+            COMBO(cmb_times1, &kp STAR, 27 40)
+            COMBO(cmb_divide1, &kp SLASH, 28 40)
 
 // ╭─────────────────────────╮  OTHER   ╭───────────────────────────╮
 // │ _   _{bs}_{dl}_   _{+}_ │  COMBOS  │  _   _    _   _   _     _ │
@@ -148,8 +137,6 @@
             COMBO(del, &kp DEL, 2 3)
             COMBO(esc, &kp ESC, 1 3)
             COMBO(enter, &kp RET, 22 23)
-            //COMBO(times, &kp STAR, 3 4)
-            //COMBO(divide, &kp SLASH, 15 16)
             COMBO(plus, &kp PLUS, 4 5) 
             COMBO(minus, &kp MINUS, 16 17)
             COMBO(plsmns, &mcr_plsmns, 28 29)
@@ -158,7 +145,9 @@
             COMBO(up2, &kp UP, 31 32)         // up arrow by pressing left and down (for use on right side)
             COMBO(dn2, &kp DOWN, 45 46)       // down arrow by pressing left and right (for use on right side)
             COMBO(int, &mcr_int, 9 10 11)
-            COMBO(mouse, &to 4, 30 35)       // go to mouse settings layer
+            COMBO(mouse, &to 4, 30 35)        // go to mouse settings layer
+            COMBO(home, &kp HOME, 30 44)      // home
+            COMBO(end, &kp END, 31 44)        // end
   };
 };
 
@@ -172,6 +161,7 @@
             tapping-term-ms = <200>;
             bindings = <&mo>, <&tog>;
         };
+        // tapdance behavior: used to turn on caps lock by double tapping left shift
         td_Lshftcaps: td_Lshftcaps {
             compatible = "zmk,behavior-tap-dance";
             label = "td_Lshftcaps";
@@ -226,8 +216,8 @@
         >;
     };
 
-    navigation_layer {
-      display-name = "navigation";
+    numrow_layer {
+      display-name = "numrow";
       bindings = <
       // ╭────────────────────────────╮               ╭─────────────────────────────╮
       // | TAB   1    2    3   4   5  |               |  6    7    8    9    0   `  |
@@ -248,40 +238,21 @@
         >;
     };
 
-
-/*#ifdef HAS_MOUSE_KEYS
-    MouseKeys_layer {
-      display-name = "MouseKeys";
-      bindings = <
-        // ╭─────────────────────────────────╮             ╭──────────────────────────────────╮
-        // | TPSet TPSet  -   mvup  scrlup - |             | -  scrlup mvup    -  TPSet TPSet |
-        // |   -     -  mvlft mvdwn mvrgt  - ╰─────╮ ╭─────╯ -  mvlft  mvdwn mvrgt  -     -   |
-        // |   -     -    -     -   scrldn -   ( ) | | ( )   -  scrldn   -     -    -     -   |
-        // ╰─────────╮  ( )     -   rclk mclk lclk | | lclk mclk rclk - ( ) ╭─────────────────╯
-        //           ╰─────────────────────────────╯ ╰──────────────────────╯
-        U_TOG_TP_SET U_TOG_TP_SET &none &mmv MOVE_UP &msc SCRL_UP &none &none &msc SCRL_UP &mmv MOVE_UP &none U_TOG_TP_SET U_TOG_TP_SET
-        &none &none &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none &none &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_RIGHT &none &none
-        &none &none &none &none &msc SCRL_DOWN &none &none &msc SCRL_DOWN &none &none &none &none
-        &trans &none &mkp RCLK &mkp MCLK &mkp LCLK &trans &trans &mkp LCLK &mkp MCLK &mkp RCLK &none &trans
-      >;
-      // encoder order: RH Left, RH Right, LH Left, LH Right
-      sensor-bindings = <
-        &inc_dec_kp LEFT RIGHT
-        &inc_dec_kp C_VOL_DN C_VOL_UP
-        >;
-    };
-#endif*/
-
-#ifdef HAS_MOUSE_TP
     // Automatically activated when the mouse or trackpoint moves.
     // Configured in `include/mouse_tp.dtsi`.
-    MouseTP_layer {
+    TP_layer {
       display-name = "TP";
       bindings = <
-        U_TOG_TP_SET U_TOG_TP_SET &trans &trans &msc SCRL_UP   &trans      &trans &trans &trans &trans U_TOG_TP_SET U_TOG_TP_SET
-        &trans       &trans       &trans &trans &trans         &trans      &trans &trans &trans &trans &trans       &trans
-        &trans       &trans       &trans &trans &msc SCRL_DOWN &trans      &trans &trans &trans &trans &trans       &trans
-        &trans &none &mkp RCLK &mkp MCLK &mkp LCLK &trans &trans &mkp LCLK &mkp MCLK &mkp RCLK &none &trans
+        // ╭─────────────────────────╮           ╭───────────────────────────────╮
+        // |  -    -   -   -   -   - |           | MClk RClk  -   -   - Settings |
+        // |  -    -   -   -   -   - ╰────╮ ╭────╯  -    -    -   -   -    -     |
+        // |  -    -   -   -   -   -  ( ) | | ( )   -    -    -   -   -    -     |
+        // ╰───────╮  ( )  -   -   -   -  | | LClk  -    -    -  ( ) ╭───────────╯
+        //         ╰──────────────────────╯ ╰────────────────────────╯
+        &none  &none &none &none &none &none       &mkp MCLK &mkp RCLK &none &none &none &to MouseSettings_layer
+        &none  &none &none &none &none &none       &none     &none     &none &none &none &none
+        &none  &none &none &none &none &none       &none     &none     &none &none &none &none
+        &trans &none &none &none &none &trans     &trans     &mkp LCLK &none &none &none &trans
       >;
       // encoder order: RH Left, RH Right, LH Left, LH Right
       sensor-bindings = <
@@ -290,7 +261,7 @@
         >;
     };
 
-    // You can find the defines for the actual key press behaviors in `include/mouse_tp.dtsi`.
+    // Defininitions for these behaviors are in include/mouse_tp.dtsi
     MouseSettings_layer {
       display-name = "Mouse TP Set";
       bindings = <
@@ -298,13 +269,12 @@
         // |   -    -   -   -   -   - |           | -   -   -   -   -   -   |
         // |   -    -   -   -   -   - ╰────╮ ╭────╯ -   -   -   -   -   -   |
         // |   -    -   -   -   -   -  ( ) | | ( )  -   -   -   -   -   -   |
-        // ╰────────╮  ( )  -   -   -   -  | |  -   -   -   -  ( ) ╭────────╯
+        // ╰────────╮  ( )  -   -   -   -  | |  -   -   -   -  (1) ╭────────╯     !!!!! return to base layer upon pressing the right encoder !!!!!
         //          ╰──────────────────────╯ ╰─────────────────────╯
         U_TOG_TP_SET U_TOG_TP_SET &none SnsDec SnsInc PtsInc     PtsInc SnsDec SnsInc &none U_TOG_TP_SET U_TOG_TP_SET
                       TpRst TpRst &none InrDec InrInc PtsDec     PtsDec InrDec InrInc &none TpRst TpRst
                       TpLog TpLog &none MxSDec MxSInc &none      &none  MxSDec MxSInc &none TpLog TpLog
         &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &to 0
-        // !!!!! return to base layer upon pressing the right encoder !!!!!
       >;
       // encoder order: RH Left, RH Right, LH Left, LH Right
       sensor-bindings = <
@@ -312,7 +282,6 @@
         &inc_dec_kp C_VOL_DN C_VOL_UP
         >;
     };
-#endif
   };
 };
 
