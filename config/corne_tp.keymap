@@ -88,8 +88,8 @@
         MACRO(tilert, &macro_press &kp LGUI &macro_tap &kp RIGHT &macro_release &kp LGUI)   // tile right
 
         // Macros to move by whole words and select words
-        //MACRO(prv_wrd, &macro_press &kp LCTRL &macro_tap &kp LEFT &macro_release &kp LCTRL)
-        //MACRO(nxt_wrd, &macro_press &kp LCTRL &macro_tap &kp RIGHT &macro_release &kp LCTRL)
+        MACRO(PWrd, &macro_press &kp LCTRL &macro_tap &kp LEFT &macro_release &kp LCTRL)
+        //MACRO(NWrd, &macro_press &kp LCTRL &macro_tap &kp RIGHT &macro_release &kp LCTRL)
         //MACRO(sel_prv, &macro_press &kp LCTRL &kp LSHFT &macro_tap &kp LEFT &macro_release &kp LCTRL &kp LSHFT)
         //MACRO(sel_wrd, &macro_press &kp LCTRL &macro_tap &kp RIGHT &macro_press &kp LSHFT &macro_tap &kp LEFT &macro_release &kp LCTRL &kp LSHFT)
         //MACRO(sel_nxt, &macro_press &kp LCTRL &kp LSHFT &macro_tap &kp RIGHT &macro_release &kp LCTRL &kp LSHFT)
@@ -120,17 +120,35 @@
 
 // ╭───────────────────────────────╮   COMBOS   ╭───────────────────────────╮
 // │ _   _    _   _   {=}  {_}     │    with    │     _   _   _   _   _   _ │
-// │ _   _    _   _   {+}  {-}     │ SPACE (40) │     _   _   _   _   _   _ │
+// │ _   _    _   _   {-}  {+}     │ SPACE (40) │     _   _   _   _   _   _ │
 // │ _   _    _   _   {*}  {/}  (_)│            │(_)  _   _   _   _   _   _ │
 // ╰───────╮  (_) PRSC _    _    _ │            │ _   _   _   _  (_) ╭──────╯
 //         ╰───────────────────────╯            ╰────────────────────╯
             COMBO(cmb_pscrn, &kp PSCRN, 37 40)
             COMBO(cmb_equal, &kp EQUAL, 4 40)
             COMBO(cmb_under, &kp UNDER, 5 40)
-            COMBO(cmb_plus1, &kp PLUS, 16 40)
-            COMBO(cmb_minus1, &kp MINUS, 17 40)
+            COMBO(cmb_plus1, &kp PLUS, 17 40)
+            COMBO(cmb_minus1, &kp MINUS, 16 40)
             COMBO(cmb_times1, &kp STAR, 28 40)
             COMBO(cmb_divide1, &kp SLASH, 29 40)
+
+// ╭───────────────────────────╮   COMBOS   ╭───────────────────────────╮
+// │ _   !   @   #   $   %     │    with    │     ^   &   *   (   )   ` │
+// │ _   _   _   _   _   _     │ RAISE (39) │     _   _   _   _   _   _ │
+// │ _   _   _   _   _   _  (_)│            │(_)  _   _   _   _   _   _ │
+// ╰──────╮ (_)  _   _   _   _ │            │ _   _   _   _  (_) ╭──────╯
+//        ╰────────────────────╯            ╰────────────────────╯
+            COMBO(cmb_shft1, &kp EXCL, 1 39)  // left hand
+            COMBO(cmb_shft2, &kp AT, 2 39)
+            COMBO(cmb_shft3, &kp HASH, 3 39)
+            COMBO(cmb_shft4, &kp DLLR, 4 39)
+            COMBO(cmb_shft5, &kp PRCNT, 5 39)
+            COMBO(cmb_shft6, &kp CARET, 6 44)  // right hand
+            COMBO(cmb_shft7, &kp AMPS, 7 44)
+            COMBO(cmb_shft8, &kp STAR, 8 44)
+            COMBO(cmb_shft9, &kp LPAR, 9 44)
+            COMBO(cmb_shft0, &kp RPAR, 10 44)
+            COMBO(cmb_grave, &kp GRAVE, 11 44)
 
 // ╭─────────────────────────╮  OTHER   ╭───────────────────────────╮
 // │ _   _{bs}_{dl}_   _{+}_ │  COMBOS  │  _   _    _   _   _     _ │
@@ -140,7 +158,7 @@
 //        ╰───────────────────────╯ ╰─────────────────────╯
             COMBO(bspc, &kp BSPC, 1 2)
             COMBO(del, &kp DEL, 2 3)
-            COMBO(esc, &kp ESC, 1 3)
+            COMBO(esc, &kp ESC, 0 1)
             COMBO(enter, &kp RET, 22 23)
             COMBO(plus, &kp PLUS, 4 5) 
             COMBO(minus, &kp MINUS, 16 17)
@@ -151,8 +169,10 @@
             COMBO(dn2, &kp DOWN, 45 46)       // down arrow by pressing left and right (for use on right side)
             COMBO(int, &mcr_int, 9 10 11)
             COMBO(mouse, &to 4, 30 35)        // go to mouse settings layer
-            COMBO(home, &kp HOME, 30 44)      // home
-            COMBO(end, &kp END, 31 44)        // end
+            COMBO(home1, &kp HOME, 30 44)     // home
+            COMBO(end1, &kp END, 31 44)       // end
+            COMBO(home2, &kp HOME, 28 39)     // home
+            COMBO(end2, &kp END, 29 39)       // end
   };
 };
 
@@ -182,7 +202,7 @@
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <KEYS_LEFT_NO_F KEYS_RIGHT>; // keys on the right side that can be paired with the left side mod
+            hold-trigger-key-positions = <KEYS_RIGHT>; // keys on the right side that can be paired with the left side mod
             hold-trigger-on-release;
         };
         hmr: home_row_mod_right {
@@ -193,7 +213,7 @@
             tapping-term-ms = <280>;
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <KEYS_LEFT KEYS_RIGHT_NO_J>;
+            hold-trigger-key-positions = <KEYS_LEFT>;
             hold-trigger-on-release;
         };
     };
@@ -226,15 +246,15 @@
       display-name = "numpad";
       bindings = <
       // ╭────────────────────────────╮          ╭──────────────────────────╮
-      // | TAB   =    7   8   9   +   |          |  7   8   9   (   )  BSPC |
-      // | SHFT  _    4   5   6   *   ╰────╮ ╭───╯  4   5   6   {   }       |
-      // | CTRL       1   2   3   /    ( ) | | ( )  1   2   3   [   ]       |
+      // | TAB   =    7   8   9   _   |          |  7   8   9   (   )  BSPC |
+      // | SHFT  +    4   5   6   -   ╰────╮ ╭───╯  4   5   6   {   }       |
+      // | CTRL  *    1   2   3   /    ( ) | | ( )  1   2   3   [   ]       |
       // ╰────────╮ (altb) 0   .  ENT   ●  | |  ●   0   .  ENT ( ) ╭────────╯
       //          ╰────────────────────────╯ ╰─────────────────────╯
 
-        &kp TAB   &kp EQUAL &kp N7  &kp N8  &kp N9 &kp PLUS                  &kp N7 &kp N8 &kp N9  &kp LPAR &kp RPAR &trans
-        &kp LSHFT &kp UNDER &kp N4  &kp N5  &kp N6 &kp STAR                  &kp N4 &kp N5 &kp N6  &kp LBKT &kp RBKT &none
-        &kp LCTRL &none     &kp N1  &kp N2  &kp N3 &kp SLASH                 &kp N1 &kp N2 &kp N3  &kp LBRC &kp RBRC &none
+        &kp TAB   &kp EQUAL &kp N7  &kp N8  &kp N9 &kp UNDER                  &kp N7 &kp N8 &kp N9  &kp LPAR &kp RPAR &trans
+        &kp LSHFT &kp PLUS  &kp N4  &kp N5  &kp N6 &kp MINUS                  &kp N4 &kp N5 &kp N6  &kp LBKT &kp RBKT &none
+        &kp LCTRL &kp STAR  &kp N1  &kp N2  &kp N3 &kp SLASH                 &kp N1 &kp N2 &kp N3  &kp LBRC &kp RBRC &none
                   &trans    &kp N0    &kp DOT &kp RET &trans &trans   &trans &trans &kp N0 &kp DOT &kp RET &trans
       >;
       sensor-bindings = <
@@ -246,17 +266,17 @@
     numrow_layer {
       display-name = "numrow";
       bindings = <
-      // ╭────────────────────────────╮               ╭─────────────────────────────╮
-      // | TAB   1    2    3   4   5  |               |  6    7    8    9    0   `  |
-      // | SHFT  !    @    #   $   %  ╰──────╮ ╭──────╯  ^    &    *    (    )      |
-      // | CTRL GUI  <-    ^   v   ->  (Pwr) | | (RGB)  hue- hue+ sat- sat+ br- br+ |
-      // ╰────────╮ (altb) TL  TR  ●   SPACE | | SPACE   ●    TL   TR (Eff) ╭───────╯
-      //          ╰──────────────────────────╯ ╰────────────────────────────╯
+      // ╭──────────────────────────────╮               ╭──────────────────────────────╮
+      // | TAB   1    2    3    4    5  |               |  6    7    8    9    0  BSPC |
+      // | SHFT      PWrd HOME  ^   END ╰──────╮ ╭──────╯ HOME  ^   END  hue+ sat+ br+ |
+      // | CTRL GUI        <-   v   ->   (Pwr) | | (RGB)   <-   v   ->   hue- sat- br- |
+      // ╰────────╮ (altb) TL   TR   ●   SPACE | | SPACE   ●       TPSet (Eff) ╭───────╯
+      //          ╰────────────────────────────╯ ╰─────────────────────────────╯
 
-        &trans &kp N1   &kp N2   &kp N3   &kp N4   &kp N5                                &kp N6    &kp N7   &kp N8    &kp N9  &kp N0   &kp GRAVE
-        &trans &kp EXCL &kp AT   &kp HASH &kp DLLR &kp PRCNT                             &kp CARET &kp AMPS &kp STAR &kp LPAR &kp RPAR &none
-        &trans &kp LGUI &kp LEFT &kp UP   &kp DOWN &kp RIGHT                             &rgb_ug RGB_HUD &rgb_ug RGB_HUI &rgb_ug RGB_SAD &rgb_ug RGB_SAI &rgb_ug RGB_BRD  &rgb_ug RGB_BRI
-        &trans &mcr_tilelt &mcr_tilert &trans &trans &ext_power EP_TOG  &rgb_ug RGB_TOG &trans &trans &mcr_tilelt &mcr_tilert &rgb_ug RGB_EFF
+        &trans &kp N1   &kp N2 &kp N3   &kp N4   &kp N5                                 &kp N6   &kp N7   &kp N8    &kp N9   &kp N0   &trans
+        &trans &none &mcr_PWrd &kp HOME &kp UP   &kp END                                &none    &kp UP   &none     &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI
+        &trans &kp LGUI &none  &kp LEFT &kp DOWN &kp RIGHT                              &kp LEFT &kp DOWN &kp RIGHT &rgb_ug RGB_HUD &rgb_ug RGB_SAD  &rgb_ug RGB_BRD
+        &trans &mcr_tilelt &mcr_tilert &trans &trans &ext_power EP_TOG  &rgb_ug RGB_TOG &trans &trans &none &to 4 &rgb_ug RGB_EFF
       >;
       // encoder order: RH Left, RH Right, LH Left, LH Right
       sensor-bindings = <
@@ -270,16 +290,16 @@
     TP_layer {
       display-name = "TP";
       bindings = <
-        // ╭─────────────────────────╮           ╭───────────────────────────────╮
-        // |  -    -   -   -   -   - |           | MClk RClk  -   -   - Settings |
-        // |  -    -   -   -   -   - ╰────╮ ╭────╯  -    -    -   -   -    -     |
-        // |  -    -   -   -   -   -  ( ) | | ( )   -    -    -   -   -    -     |
-        // ╰───────╮  ( )  -   -   -   -  | | LClk  -    -    -  ( ) ╭───────────╯
+        // ╭─────────────────────────╮           ╭───────────────────────────╮
+        // |  -    -   -   -   -   - |           | MClk RClk  -   -   -   -  |
+        // | Shft  -   -   -   -   - ╰────╮ ╭────╯  -    -    -   -   -   -  |
+        // | Ctrl  -   -   -   -   -  ( ) | | ( )   -    -    -   -   -   -  |
+        // ╰───────╮  ( )  -   -   -   -  | | LClk  -    -    -  ( ) ╭───────╯
         //         ╰──────────────────────╯ ╰────────────────────────╯
-        &none  &none &none &none &none &none       &mkp MCLK &mkp RCLK &none &none &none &to MouseSettings_layer
-        &none  &none &none &none &none &none       &none     &none     &none &none &none &none
-        &none  &none &none &none &none &none       &none     &none     &none &none &none &none
-        &trans &none &none &none &none &trans     &trans     &mkp LCLK &none &none &none &trans
+            &none &none &none &none &none &none       &mkp MCLK &mkp RCLK &none &none &none &none
+        &kp LSHFT &none &none &none &none &none       &none     &none     &none &none &none &none
+        &kp LCTRL &none &none &none &none &none       &none     &none     &none &none &none &none
+           &trans &none &none &none &none &trans     &trans     &mkp LCLK &none &none &none &trans
       >;
       // encoder order: RH Left, RH Right, LH Left, LH Right
       sensor-bindings = <
@@ -293,15 +313,15 @@
       display-name = "Mouse TP Set";
       bindings = <
         // ╭────────────────────────────╮           ╭───────────────────────────╮
-        // | Reset  -   -   -   -  Pts+ |           | Sns+ Inr+  -   -   -  Log |
-        // |   -    -   -   -   -  Pts- ╰────╮ ╭────╯ Sns- Inr-  -   -   -   -  |
-        // |   -    -   -   -   -   -    ( ) | | ( )  -     -    -   -   -   -  |
-        // ╰────────╮  ( )  -   -   -     -  | |  -   -     -    -  (0) ╭───────╯     !!!!! return to base layer upon pressing the right encoder !!!!!
+        // | Reset  -   -   -   -  Pts+ |           | Sns+ Inr+ MxS+ -   -  Log |
+        // |   -    -   -   -   -  Pts- ╰────╮ ╭────╯ Sns- Inr- MxS- -   -   -  |
+        // |   -    -   -   -   -   -    ( ) | | ( )   -    -    -   -   -   -  |
+        // ╰────────╮  ( )  -   -   -   to 0 | | to 0  -    -    -  ( ) ╭───────╯     !!!!! return to base layer upon pressing space !!!!!
         //          ╰────────────────────────╯ ╰────────────────────────╯
         TpRst  &none &none &none &none PtsInc     SnsInc InrInc MxSInc &none &none TpLog
         &none  &none &none &none &none PtsDec     SnsDec InrDec MxSDec &none &none &none
         &none  &none &none &none &none &none      &none  &none  &none  &none &none &none
-        &trans &none &none &none &none &trans     &trans &none  &none  &none &none &to 0
+        &trans &none &none &none &to 0 &trans     &trans &to 0  &none  &none &none &trans
       >;
       // encoder order: RH Left, RH Right, LH Left, LH Right
       sensor-bindings = <
