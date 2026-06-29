@@ -274,7 +274,7 @@
       //          ╰────────────────────────────╯ ╰─────────────────────────────╯
 
         &trans &kp N1   &kp N2 &kp N3   &kp N4   &kp N5                                 &kp N6   &kp N7   &kp N8    &kp N9   &kp N0   &trans
-        &trans &none &mcr_PWrd &kp HOME &kp UP   &kp END                                &none    &kp UP   &none     &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI
+        &trans &none &mcr_PWrd &kp HOME &kp UP   &kp END                                &kp HOME &kp UP   &kp END   &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI
         &trans &kp LGUI &none  &kp LEFT &kp DOWN &kp RIGHT                              &kp LEFT &kp DOWN &kp RIGHT &rgb_ug RGB_HUD &rgb_ug RGB_SAD  &rgb_ug RGB_BRD
         &trans &mcr_tilelt &mcr_tilert &trans &trans &ext_power EP_TOG  &rgb_ug RGB_TOG &trans &trans &none &to 4 &rgb_ug RGB_EFF
       >;
