@@ -131,14 +131,16 @@
             COMBO(cmb_minus1, &kp MINUS, 16 40)
             COMBO(cmb_times1, &kp STAR, 28 40)
             COMBO(cmb_divide1, &kp SLASH, 29 40)
+            COMBO(deg, &mcr_deg, 26 40)           // degree
 
 // ╭───────────────────────────╮   COMBOS   ╭───────────────────────────╮
-// │ _   !   @   #   $   %     │    with    │     ^   &   *   (   )   ` │
+// │ ~   !   @   #   $   %     │    with    │     ^   &   *   (   )   ` │
 // │ _   _   _   _   _   _     │ RAISE (39) │     _   _   _   _   _   _ │
 // │ _   _   _   _   _   _  (_)│            │(_)  _   _   _   _   _   _ │
 // ╰──────╮ (_)  _   _   _   _ │            │ _   _   _   _  (_) ╭──────╯
 //        ╰────────────────────╯            ╰────────────────────╯
-            COMBO(cmb_shft1, &kp EXCL, 1 39)  // left hand
+            COMBO(cmb_tilde, &kp TILDE, 0 39)  // left hand
+            COMBO(cmb_shft1, &kp EXCL, 1 39)
             COMBO(cmb_shft2, &kp AT, 2 39)
             COMBO(cmb_shft3, &kp HASH, 3 39)
             COMBO(cmb_shft4, &kp DLLR, 4 39)
@@ -151,8 +153,8 @@
             COMBO(cmb_grave, &kp GRAVE, 11 44)
 
 // ╭─────────────────────────╮  OTHER   ╭───────────────────────────╮
-// │ _   _{bs}_{dl}_   _{+}_ │  COMBOS  │  _   _    _   _   _     _ │
-// │ _   _    _    _   _{-}_ ╰────╮ ╭───╯  _   _    _   _   _{RET}_ │
+// │ _   _{bs}_{dl}_   _   _ │  COMBOS  │  _   _    _   _   _     _ │
+// │ _   _    _    _   _   _ ╰────╮ ╭───╯  _   _    _   _   _{RET}_ │
 // │ _   _    _{up}_   _{±}_    _ | | _    _   _{up}_   _   _     _ │
 // ╰──────╮   _{dn}_   _   _    _ │ │ _    _   _{dn}_   _ ╭─────────╯
 //        ╰───────────────────────╯ ╰─────────────────────╯
@@ -160,8 +162,6 @@
             COMBO(del, &kp DEL, 2 3)
             COMBO(esc, &kp ESC, 0 1)
             COMBO(enter, &kp RET, 22 23)
-            COMBO(plus, &kp PLUS, 4 5) 
-            COMBO(minus, &kp MINUS, 16 17)
             COMBO(plsmns, &mcr_plsmns, 28 29)
             COMBO(up1, &kp UP, 27 28)         // up arrow by pressing c and v
             COMBO(dn1, &kp DOWN, 37 38)       // down arrow by pressing left and right
@@ -173,6 +173,8 @@
             COMBO(end1, &kp END, 31 44)       // end
             COMBO(home2, &kp HOME, 28 39)     // home
             COMBO(end2, &kp END, 29 39)       // end
+            COMBO(mu, &mcr_mu, 7 8)           // mu
+            COMBO(eps, &mcr_eps, 8 9)         // epsilon
   };
 };
 
