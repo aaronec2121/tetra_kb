@@ -65,6 +65,11 @@
   #define U_THUMB_INNER &none
 #endif
 
+&mt {
+    tapping-term-ms = <200>;
+    retro-tap;
+};
+
 / {
     macros {
         // Symbol macros and others
@@ -176,14 +181,6 @@
 
 / {
     behaviors {
-      mt: mod_tap {
-        compatible = "zmk,behavior-hold-tap";
-        #binding-cells = <2>;
-        flavor = "hold-preferred";
-        tapping-term-ms = <200>;
-        bindings = <&kp>, <&kp>;
-        display-name = "Mod-Tap";
-      };
       // tapdance behavior: used to turn on caps lock by double tapping left shift
       td_Lshftcaps: td_Lshftcaps {
         compatible = "zmk,behavior-tap-dance";
