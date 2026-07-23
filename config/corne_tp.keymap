@@ -118,12 +118,12 @@
   combos {
     compatible = "zmk,combos";
 
-// ╭───────────────────────────────╮   COMBOS   ╭───────────────────────────╮
-// │ _   _    _   _   {=}  {_}     │    with    │     _   _   _   _   _   _ │
-// │ _   _    _   _   {-}  {+}     │ SPACE (40) │     _   _   _   _   _   _ │
-// │ _   _    _   _   {*}  {/}  (_)│            │(_)  _   _   _   _   _   _ │
-// ╰───────╮  (_) PRSC _    _    _ │            │ _   _   _   _  (_) ╭──────╯
-//         ╰───────────────────────╯            ╰────────────────────╯
+// ╭─────────────────────────╮   COMBOS with   ╭───────────────────────╮
+// │ _   _    _   _  {=} {_} │ SPACE  (40, 43) │ _  {µ} {ε}  _   _   _ │
+// │ _   _    _   _  {-} {+} ╰───╮        ╭────╯ _   _   _   _   _   _ │
+// │ _   _    _   _  {*} {/}  ◯ │        │ ◯   _   _   _   _   _   _ │
+// ╰───────╮ ◯  PRSC _   _   ●  │        │  ●   _   _   _   ◯ ╭──────╯
+//         ╰─────────────────────╯        ╰─────────────────────╯
             COMBO(cmb_pscrn, &kp PSCRN, 37 40)
             COMBO(cmb_equal, &kp EQUAL, 4 40)
             COMBO(cmb_under, &kp UNDER, 5 40)
@@ -131,14 +131,16 @@
             COMBO(cmb_minus1, &kp MINUS, 16 40)
             COMBO(cmb_times1, &kp STAR, 28 40)
             COMBO(cmb_divide1, &kp SLASH, 29 40)
-            COMBO(deg, &mcr_deg, 26 40)           // degree
+            COMBO(deg, &mcr_deg, 26 40)            // degree
+            COMBO(mu, &mcr_mu, 7 43)               // mu
+            COMBO(eps, &mcr_eps, 8 43)             // epsilon
 
-// ╭───────────────────────────╮   COMBOS   ╭───────────────────────────╮
-// │ ~   !   @   #   $   %     │    with    │     ^   &   *   (   )   ` │
-// │ _   _   _   _   _   _     │ RAISE (39) │     _   _   _   _   _   _ │
-// │ _   _   _   _   _   _  (_)│            │(_)  _   _   _   _   _   _ │
-// ╰──────╮ (_)  _   _   _   _ │            │ _   _   _   _  (_) ╭──────╯
-//        ╰────────────────────╯            ╰────────────────────╯
+// ╭───────────────────────╮   COMBOS with   ╭───────────────────────╮
+// │ ~   !   @   #   $   % │ RAISE  (39, 44) │ ^   &   *   (   )   ` │
+// │ _   _   _   _   _   _ ╰────╮       ╭────╯ _   _   _   [   ]   _ │
+// │ _   _   _   _   _   _  (_) │       │ (_)  _   _   _   {   }   _ │
+// ╰──────╮ (_)  _   _   ●   _  │       │  _   ●   _   _  (_) ╭──────╯
+//        ╰─────────────────────╯       ╰─────────────────────╯
             COMBO(cmb_tilde, &kp TILDE, 0 39)  // left hand
             COMBO(cmb_shft1, &kp EXCL, 1 39)
             COMBO(cmb_shft2, &kp AT, 2 39)
@@ -151,30 +153,29 @@
             COMBO(cmb_shft9, &kp LPAR, 9 44)
             COMBO(cmb_shft0, &kp RPAR, 10 44)
             COMBO(cmb_grave, &kp GRAVE, 11 44)
+            COMBO(cmb_lbrack, &kp LBKT, 21 44)
+            COMBO(cmb_rbrack, &kp RBKT, 22 44)
+            COMBO(cmb_lbrace, &kp LBRC, 33 44)
+            COMBO(cmb_rbrace, &kp RBRC, 34 44)
 
-// ╭─────────────────────────╮  OTHER   ╭───────────────────────────╮
-// │ _   _{bs}_{dl}_   _   _ │  COMBOS  │  _   _    _   _   _     _ │
-// │ _   _    _    _   _   _ ╰────╮ ╭───╯  _   _    _   _   _{RET}_ │
-// │ _   _    _{up}_   _{±}_    _ | | _    _   _{up}_   _   _     _ │
-// ╰──────╮   _{dn}_   _   _    _ │ │ _    _   _{dn}_   _ ╭─────────╯
-//        ╰───────────────────────╯ ╰─────────────────────╯
+// ╭───────────────────────────╮  OTHER    ╭──────────────────────────╮
+// │ _{esc}_{bs}_{dl}_   _   _ │  COMBOS   │ _    _   _   _   _     _ │
+// │ _     _    _    _   _   _ ╰────╮ ╭────╯ _    _   _   _   _{ret}_ │
+// │ _     _    _    _   _{±}_   ◯ | | ◯   _    _   _   _   _     _ │
+// ╰────────╮  ◯    _   _   _   _  │ │  _   _{up}_   _   ◯ ╭────────╯
+//          ╰───────────────────────╯ ╰──────────────────────╯
             COMBO(bspc, &kp BSPC, 1 2)
             COMBO(del, &kp DEL, 2 3)
             COMBO(esc, &kp ESC, 0 1)
             COMBO(enter, &kp RET, 22 23)
             COMBO(plsmns, &mcr_plsmns, 28 29)
-            COMBO(up1, &kp UP, 27 28)         // up arrow by pressing c and v
-            COMBO(dn1, &kp DOWN, 37 38)       // down arrow by pressing left and right
-            COMBO(up2, &kp UP, 31 32)         // up arrow by pressing left and down (for use on right side)
-            COMBO(dn2, &kp DOWN, 45 46)       // down arrow by pressing left and right (for use on right side)
+            COMBO(up, &kp UP, 44 45)          // up arrow by pressing left and down
             COMBO(int, &mcr_int, 9 10 11)
             COMBO(mouse, &to 4, 30 35)        // go to mouse settings layer
             COMBO(home1, &kp HOME, 30 44)     // home
             COMBO(end1, &kp END, 31 44)       // end
             COMBO(home2, &kp HOME, 28 39)     // home
             COMBO(end2, &kp END, 29 39)       // end
-            COMBO(mu, &mcr_mu, 7 8)           // mu
-            COMBO(eps, &mcr_eps, 8 9)         // epsilon
   };
 };
 
@@ -226,17 +227,17 @@
     base_layer {
       display-name = "base";
       bindings = <
-      // ╭──────────────────────────────────╮               ╭────────────────────────────────╮
-      // |  TAB     Q     W     E    R   T  |               |  Y    U    I    O    P    BSPC |
-      // | SHFT/CAP A     S     D    F   G  ╰──────╮ ╭──────╯  H    J    K    L    ;:   ' "  |
-      // |  CTRL    Z     X     C    V   B    (PP) | | (prev)  N    M    ,    .    /?   SHFT |
-      // ╰──────────╮ (altb)  <-  ->  ENTER  SPACE | | SPACE ENTER   <-  -> (next)╭──────────╯
-      //            ╰──────── ctrl alt  nav numpad ╯ ╰ numpad nav ────────────────╯
+      // ╭────────────────────────────────╮                ╭─────────────────────────────────╮
+      // |  TAB     Q    W    E    R   T  |                |  Y    U    I    O    P    BSPC  |
+      // | SHFT/CAP A    S    D    F   G  ╰───────╮ ╭──────╯  H    J    K    L    ;:   ' "   |
+      // |  CTRL    Z    X    C    V   B    (PP)  | | (prev)  N    M    ,    .    /?  \|SHFT |
+      // ╰──────────╮   ◯   GUI  ALT ENTER SPACE | | SPACE ENTER   <-  ->   ◯  ╭───────────╯
+      //            ╰────────────────  nav numpad ╯ ╰ numpad nav ────────────────╯
 
-        &kp TAB   &kp Q     &kp W    &kp E      &kp R       &kp T                        &kp Y       &kp U      &kp I     &kp O     &kp P     &kp BSPC
-    &td_Lshftcaps &kp A     &kp S    &kp D   &hml LSHFT F   &kp G                        &kp H    &hmr RSHFT J  &kp K     &kp L     &kp SEMI  &kp SQT
-        &kp LCTRL &kp Z     &kp X    &kp C      &kp V       &kp B                        &kp N       &kp M      &kp COMMA &kp DOT   &kp SLASH &kp RSHFT
-        &mcr_altb &mt LCTRL LEFT &mt LALT RIGHT &lt 2 RET &lt 1 SPACE &kp C_PP   &kp C_PREV &lt 1 SPACE &lt 2 RET &kp LEFT  &kp RIGHT &kp C_NEXT
+        &kp TAB   &kp Q     &kp W    &kp E      &kp R       &kp T                       &kp Y       &kp U     &kp I     &kp O     &kp P     &kp BSPC
+    &td_Lshftcaps &kp A     &kp S    &kp D   &hml LSHFT F   &kp G                       &kp H    &hmr RSHFT J &kp K     &kp L     &kp SEMI  &kp SQT
+        &kp LCTRL &kp Z     &kp X    &kp C      &kp V       &kp B                       &kp N       &kp M     &kp COMMA &kp DOT   &kp SLASH &mt RSHFT BSLH
+        &none     &kp LGUI  &kp ALT  &lt 2 RET &lt 1 SPACE &kp C_PP   &kp C_PREV &lt 1 SPACE &lt 2 LEFT &kp DOWN  &kp RIGHT &none
       >;
       sensor-bindings = <
         &inc_dec_kp LEFT RIGHT
@@ -247,17 +248,17 @@
     numpad_layer {
       display-name = "numpad";
       bindings = <
-      // ╭────────────────────────────╮          ╭──────────────────────────╮
-      // | TAB   =    7   8   9   _   |          |  7   8   9   (   )  BSPC |
-      // | SHFT  +    4   5   6   -   ╰────╮ ╭───╯  4   5   6   {   }       |
-      // | CTRL  *    1   2   3   /    ( ) | | ( )  1   2   3   [   ]       |
-      // ╰────────╮ (altb) 0   .  ENT   ●  | |  ●   0   .  ENT ( ) ╭────────╯
-      //          ╰────────────────────────╯ ╰─────────────────────╯
+      // ╭───────────────────────────╮          ╭──────────────────────────────╮
+      // | TAB   =    7   8   9   _  |          |                         BSPC |
+      // | SHFT  +    4   5   6   -  ╰────╮ ╭───╯                              |
+      // | CTRL  *    1   2   3   /    ◯ | | ◯                               |
+      // ╰────────╮  ◯   0   .  ENT   ●  | |  ● PrvTrk _ NxtTrk ◯ ╭──────────╯
+      //          ╰───────────────────────╯ ╰───────────────────────╯
 
-        &kp TAB   &kp EQUAL &kp N7  &kp N8  &kp N9 &kp UNDER                  &kp N7 &kp N8 &kp N9  &kp LPAR &kp RPAR &trans
-        &kp LSHFT &kp PLUS  &kp N4  &kp N5  &kp N6 &kp MINUS                  &kp N4 &kp N5 &kp N6  &kp LBKT &kp RBKT &none
-        &kp LCTRL &kp STAR  &kp N1  &kp N2  &kp N3 &kp SLASH                 &kp N1 &kp N2 &kp N3  &kp LBRC &kp RBRC &none
-                  &trans    &kp N0    &kp DOT &kp RET &trans &trans   &trans &trans &kp N0 &kp DOT &kp RET &trans
+        &kp TAB   &kp EQUAL &kp N7  &kp N8  &kp N9 &kp UNDER                &none &none &none &none &none &trans
+        &kp LSHFT &kp PLUS  &kp N4  &kp N5  &kp N6 &kp MINUS                &none &none &none &none &none &none
+        &kp LCTRL &kp STAR  &kp N1  &kp N2  &kp N3 &kp SLASH                &none &none &none &none &none &none
+                  &none    &kp N0    &kp DOT &kp RET &trans &trans   &trans &trans &kp C_PREV &kp C_PP &kp C_NEXT &none
       >;
       sensor-bindings = <
         &inc_dec_kp LEFT RIGHT
@@ -268,17 +269,17 @@
     numrow_layer {
       display-name = "numrow";
       bindings = <
-      // ╭──────────────────────────────╮               ╭──────────────────────────────╮
-      // | TAB   1    2    3    4    5  |               |  6    7    8    9    0  BSPC |
-      // | SHFT      PWrd HOME  ^   END ╰──────╮ ╭──────╯ HOME  ^   END  hue+ sat+ br+ |
-      // | CTRL GUI        <-   v   ->   (Pwr) | | (RGB)   <-   v   ->   hue- sat- br- |
-      // ╰────────╮ (altb) TL   TR   ●   SPACE | | SPACE   ●       TPSet (Eff) ╭───────╯
-      //          ╰────────────────────────────╯ ╰─────────────────────────────╯
+      // ╭─────────────────────────────╮          ╭──────────────────────────────╮
+      // | TAB  1    2    3    4    5  |          |  6    7    8    9    0  BSPC |
+      // | SHFT     HOME  ^   END      ╰───╮ ╭────╯ Pwr  RGB  Eff  hue+ sat+ br+ |
+      // | CTRL      <-   v   ->        ◯ | | ◯                  hue- sat- br- |
+      // ╰────────╮ ◯    TL   TR  ● SPACE | | SPACE ●       TPSet  ◯ ╭─────────╯
+      //          ╰────────────────────────╯ ╰─────────────────────────╯
 
-        &trans &kp N1   &kp N2 &kp N3   &kp N4   &kp N5                                 &kp N6   &kp N7   &kp N8    &kp N9   &kp N0   &trans
-        &trans &none &mcr_PWrd &kp HOME &kp UP   &kp END                                &kp HOME &kp UP   &kp END   &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI
-        &trans &kp LGUI &none  &kp LEFT &kp DOWN &kp RIGHT                              &kp LEFT &kp DOWN &kp RIGHT &rgb_ug RGB_HUD &rgb_ug RGB_SAD  &rgb_ug RGB_BRD
-        &trans &mcr_tilelt &mcr_tilert &trans &trans &ext_power EP_TOG  &rgb_ug RGB_TOG &trans &trans &none &to 4 &rgb_ug RGB_EFF
+        &trans &kp N1 &kp N2   &kp N3   &kp N4    &kp N5             &kp N6   &kp N7   &kp N8    &kp N9   &kp N0   &trans
+        &trans &none  &kp HOME &kp UP   &kp END   &none              &ext_power EP_TOG &rgb_ug RGB_TOG &rgb_ug RGB_EFF &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI
+        &trans &none  &kp LEFT &kp DOWN &kp RIGHT &none              &none &none &none &rgb_ug RGB_HUD &rgb_ug RGB_SAD  &rgb_ug RGB_BRD
+        &none &mcr_tilelt &mcr_tilert &trans &trans &trans    &trans &trans &trans &none &to 4 &none
       >;
       // encoder order: RH Left, RH Right, LH Left, LH Right
       sensor-bindings = <
@@ -287,8 +288,8 @@
         >;
     };
 
-    // Automatically activated when the mouse or trackpoint moves.
-    // Configured in `include/mouse_tp.dtsi`.
+    // Automatically activated when the mouse or trackpoint moves
+    // Configured in `include/mouse_tp.dtsi`
     TP_layer {
       display-name = "TP";
       bindings = <
