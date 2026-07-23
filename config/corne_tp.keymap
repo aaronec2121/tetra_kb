@@ -35,11 +35,6 @@
     bindings = <BINDINGS>; \
   };
 
-// Mod tap settings
-&mt {
-    tapping-term-ms = <200>;   // hold for longer than this value, or press any other key while held, and it functions as a mod
-};
-
 /*
  * Defines to enable/disable features
  *
@@ -181,22 +176,22 @@
 
 / {
     behaviors {
-        mo_tog: behavior_mo_tog {
-            compatible = "zmk,behavior-hold-tap";
-            label = "mo_tog";
-            #binding-cells = <2>;
-            flavor = "hold-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&mo>, <&tog>;
-        };
-        // tapdance behavior: used to turn on caps lock by double tapping left shift
-        td_Lshftcaps: td_Lshftcaps {
-            compatible = "zmk,behavior-tap-dance";
-            label = "td_Lshftcaps";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp LSHFT>, <&kp CAPS>;
-        };
+      mt: mod_tap {
+        compatible = "zmk,behavior-hold-tap";
+        #binding-cells = <2>;
+        flavor = "hold-preferred";
+        tapping-term-ms = <200>;
+        bindings = <&kp>, <&kp>;
+        display-name = "Mod-Tap";
+      };
+      // tapdance behavior: used to turn on caps lock by double tapping left shift
+      td_Lshftcaps: td_Lshftcaps {
+        compatible = "zmk,behavior-tap-dance";
+        label = "td_Lshftcaps";
+        #binding-cells = <0>;
+        tapping-term-ms = <200>;
+        bindings = <&kp LSHFT>, <&kp CAPS>;
+      };
       hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -231,12 +226,12 @@
       // |  TAB     Q    W    E    R   T  |                |  Y    U    I    O    P    BSPC  |
       // | SHFT/CAP A    S    D    F   G  ╰───────╮ ╭──────╯  H    J    K    L    ;:   ' "   |
       // |  CTRL    Z    X    C    V   B    (PP)  | | (prev)  N    M    ,    .    /?  \|SHFT |
-      // ╰──────────╮   ◯   GUI  ALT ENTER SPACE | | SPACE ENTER   <-  ->   ◯  ╭───────────╯
+      // ╰──────────╮   ◯   GUI  ALT ENTER SPACE | | SPACE   <-   v   ->   ◯  ╭───────────╯
       //            ╰────────────────  nav numpad ╯ ╰ numpad nav ────────────────╯
 
-        &kp TAB   &kp Q     &kp W    &kp E      &kp R       &kp T                       &kp Y       &kp U     &kp I     &kp O     &kp P     &kp BSPC
-    &td_Lshftcaps &kp A     &kp S    &kp D   &hml LSHFT F   &kp G                       &kp H    &hmr RSHFT J &kp K     &kp L     &kp SEMI  &kp SQT
-        &kp LCTRL &kp Z     &kp X    &kp C      &kp V       &kp B                       &kp N       &kp M     &kp COMMA &kp DOT   &kp SLASH &mt RSHFT BSLH
+        &kp TAB   &kp Q     &kp W    &kp E      &kp R       &kp T                &kp Y       &kp U     &kp I     &kp O     &kp P     &kp BSPC
+    &td_Lshftcaps &kp A     &kp S    &kp D   &hml LSHFT F   &kp G                &kp H    &hmr RSHFT J &kp K     &kp L     &kp SEMI  &kp SQT
+        &kp LCTRL &kp Z     &kp X    &kp C      &kp V       &kp B                &kp N       &kp M     &kp COMMA &kp DOT   &kp SLASH &mt RSHFT BSLH
         &none     &kp LGUI  &kp ALT  &lt 2 RET &lt 1 SPACE &kp C_PP   &kp C_PREV &lt 1 SPACE &lt 2 LEFT &kp DOWN  &kp RIGHT &none
       >;
       sensor-bindings = <
