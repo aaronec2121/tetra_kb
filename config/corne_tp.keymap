@@ -18,7 +18,7 @@
 // This defines a special way of defining combos that makes them way more compact
 #define COMBO(NAME, BINDINGS, KEYPOS) \
   combo_##NAME { \
-    timeout-ms = <40>; \
+    timeout-ms = <30>; \
     bindings = <BINDINGS>; \
     key-positions = <KEYPOS>; \
     layers = <0 1 2 3 4>; \
@@ -95,16 +95,16 @@
         //MACRO(sel_nxt, &macro_press &kp LCTRL &kp LSHFT &macro_tap &kp RIGHT &macro_release &kp LCTRL &kp LSHFT)
 
         // Macros to type common decimal numbers in SolidWorks
-        //MACRO(025, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N0 &kp KP_N2 &kp KP_N5)
-        //MACRO(100, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1)
-        //MACRO(125, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1 &kp KP_N2 &kp KP_N5)
-        //MACRO(187, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1 &kp KP_N8 &kp KP_N7 &kp KP_N5)
-        //MACRO(250, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N2 &kp KP_N5)
-        //MACRO(375, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N3 &kp KP_N7 &kp KP_N5)
-        //MACRO(500, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N5)
-        //MACRO(625, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N6 &kp KP_N2 &kp KP_N5)
-        //MACRO(750, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N7 &kp KP_N5)
-        //MACRO(875, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N8 &kp KP_N7 &kp KP_N5)
+        MACRO(025, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N0 &kp KP_N2 &kp KP_N5)
+        MACRO(100, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1)
+        MACRO(125, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1 &kp KP_N2 &kp KP_N5)
+        MACRO(187, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N1 &kp KP_N8 &kp KP_N7 &kp KP_N5)
+        MACRO(250, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N2 &kp KP_N5)
+        MACRO(375, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N3 &kp KP_N7 &kp KP_N5)
+        MACRO(500, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N5)
+        MACRO(625, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N6 &kp KP_N2 &kp KP_N5)
+        MACRO(750, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N7 &kp KP_N5)
+        MACRO(875, &macro_press &kp LCTRL &macro_tap &kp A &macro_release &kp LCTRL &macro_tap &kp KP_N0 &kp DOT &kp KP_N8 &kp KP_N7 &kp KP_N5)
 };
 
 //                         KEY POSITIONS
@@ -120,27 +120,27 @@
 
 // ╭─────────────────────────╮   COMBOS with   ╭───────────────────────╮
 // │ _   _    _   _  {=} {_} │ SPACE  (40, 43) │ _  {µ} {ε}  _   _   _ │
-// │ _   _    _   _  {-} {+} ╰───╮        ╭────╯ _   _   _   _   _   _ │
+// │ _   _    _   _  {+} {-} ╰───╮        ╭────╯ _   _   _   _   _   _ │
 // │ _   _    _   _  {*} {/}  ◯ │        │ ◯   _   _   _   _   _   _ │
 // ╰───────╮ ◯  PRSC _   _   ●  │        │  ●   _   _   _   ◯ ╭──────╯
 //         ╰─────────────────────╯        ╰─────────────────────╯
             COMBO(cmb_pscrn, &kp PSCRN, 37 40)
             COMBO(cmb_equal, &kp EQUAL, 4 40)
             COMBO(cmb_under, &kp UNDER, 5 40)
-            COMBO(cmb_plus1, &kp PLUS, 17 40)
-            COMBO(cmb_minus1, &kp MINUS, 16 40)
+            COMBO(cmb_plus1, &kp PLUS, 16 40)
+            COMBO(cmb_minus1, &kp MINUS, 17 40)
             COMBO(cmb_times1, &kp STAR, 28 40)
             COMBO(cmb_divide1, &kp SLASH, 29 40)
             COMBO(deg, &mcr_deg, 26 40)            // degree
             COMBO(mu, &mcr_mu, 7 43)               // mu
             COMBO(eps, &mcr_eps, 8 43)             // epsilon
 
-// ╭───────────────────────╮   COMBOS with   ╭───────────────────────╮
-// │ ~   !   @   #   $   % │ RAISE  (39, 44) │ ^   &   *   (   )   ` │
-// │ _   _   _   _   _   _ ╰────╮       ╭────╯ _   _   _   [   ]   _ │
-// │ _   _   _   _   _   _  (_) │       │ (_)  _   _   _   {   }   _ │
-// ╰──────╮ (_)  _   _   ●   _  │       │  _   ●   _   _  (_) ╭──────╯
-//        ╰─────────────────────╯       ╰─────────────────────╯
+// ╭─────────────────────────────╮   COMBOS with   ╭───────────────────────╮
+// │ ~   !    @    #    $     %  │ RAISE  (39, 44) │ ^   &   *   (   )   ` │
+// │ _ .375 .500 .625 .750  .875 ╰────╮       ╭────╯ _   _   _   [   ]   _ │
+// │ _ .025 .100 .125 .1875 .250  (_) │       │ (_)  _   _   _   {   }   _ │
+// ╰──────╮  (_)   _    _     ●    _  │       │  _   ●   _   _  (_) ╭──────╯
+//        ╰───────────────────────────╯       ╰─────────────────────╯
             COMBO(cmb_tilde, &kp TILDE, 0 39)  // left hand
             COMBO(cmb_shft1, &kp EXCL, 1 39)
             COMBO(cmb_shft2, &kp AT, 2 39)
@@ -160,8 +160,8 @@
 
 // ╭───────────────────────────╮  OTHER    ╭──────────────────────────╮
 // │ _{esc}_{bs}_{dl}_   _   _ │  COMBOS   │ _    _   _   _   _     _ │
-// │ _     _    _    _   _   _ ╰────╮ ╭────╯ _    _   _   _   _{ret}_ │
-// │ _     _    _    _   _{±}_   ◯ | | ◯   _    _   _   _   _     _ │
+// │ _     _    _ {-}_{+}_   _ ╰────╮ ╭────╯ _    _   _   _   _{ret}_ │
+// │ _     _    _ {*}_{/}_{±}_   ◯ | | ◯   _    _   _   _   _     _ │
 // ╰────────╮  ◯    _   _   _   _  │ │  _   _{up}_   _   ◯ ╭────────╯
 //          ╰───────────────────────╯ ╰──────────────────────╯
             COMBO(bspc, &kp BSPC, 1 2)
@@ -176,6 +176,10 @@
             COMBO(end1, &kp END, 31 44)       // end
             COMBO(home2, &kp HOME, 28 39)     // home
             COMBO(end2, &kp END, 29 39)       // end
+            COMBO(minus, &kp MINUS, 14 15)    // minus
+            COMBO(plus, &kp PLUS, 15 16)      // plus
+            COMBO(star, &kp STAR, 26 27)    // minus
+            COMBO(slash, &kp SLASH, 27 28)      // plus
   };
 };
 
@@ -223,7 +227,7 @@
       // |  TAB     Q    W    E    R   T  |                |  Y    U    I    O    P    BSPC  |
       // | SHFT/CAP A    S    D    F   G  ╰───────╮ ╭──────╯  H    J    K    L    ;:   ' "   |
       // |  CTRL    Z    X    C    V   B    (PP)  | | (prev)  N    M    ,    .    /?  \|SHFT |
-      // ╰──────────╮   ◯   GUI  ALT ENTER SPACE | | SPACE   <-   v   ->   ◯  ╭───────────╯
+      // ╰──────────╮   ◯   GUI  ALT ENTER SPACE | | SPACE  SHFT  <-   ->   ◯  ╭───────────╯
       //            ╰────────────────  nav numpad ╯ ╰ numpad nav ────────────────╯
 
         &kp TAB   &kp Q     &kp W    &kp E      &kp R       &kp T                &kp Y       &kp U     &kp I     &kp O     &kp P     &kp BSPC
@@ -242,15 +246,15 @@
       bindings = <
       // ╭───────────────────────────╮          ╭──────────────────────────────╮
       // | TAB   =    7   8   9   _  |          |                         BSPC |
-      // | SHFT  +    4   5   6   -  ╰────╮ ╭───╯                              |
-      // | CTRL  *    1   2   3   /    ◯ | | ◯                               |
+      // | SHFT  ()   4   5   6      ╰────╮ ╭───╯                              |
+      // | CTRL  (    1   2   3   )    ◯ | | ◯                               |
       // ╰────────╮  ◯   0   .  ENT   ●  | |  ● PrvTrk _ NxtTrk ◯ ╭──────────╯
       //          ╰───────────────────────╯ ╰───────────────────────╯
 
-        &kp TAB   &kp EQUAL &kp N7  &kp N8  &kp N9 &kp UNDER                &none &none &none &none &none &trans
-        &kp LSHFT &kp PLUS  &kp N4  &kp N5  &kp N6 &kp MINUS                &none &none &none &none &none &none
-        &kp LCTRL &kp STAR  &kp N1  &kp N2  &kp N3 &kp SLASH                &none &none &none &none &none &none
-                  &none    &kp N0    &kp DOT &kp RET &trans &trans   &trans &trans &kp C_PREV &kp C_PP &kp C_NEXT &none
+        &kp TAB   &kp EQUAL  &kp N7  &kp N8  &kp N9 &kp UNDER                 &none &none &none &none &none &trans
+        &kp LSHFT &mcr_paren &kp N4  &kp N5  &kp N6 &none                     &none &none &none &none &none &none
+        &kp LCTRL &kp LPAR   &kp N1  &kp N2  &kp N3 &kp RPAR                  &none &none &none &none &none &none
+                  &none      &kp N0    &kp DOT &kp RET &trans &trans   &trans &trans &kp C_PREV &kp C_PP &kp C_NEXT &none
       >;
       sensor-bindings = <
         &inc_dec_kp LEFT RIGHT
