@@ -78,7 +78,7 @@
         MACRO(eps, &macro_press &kp LALT &macro_tap &kp KP_N2 &kp KP_N3 &kp KP_N8 &macro_release &kp LALT)   // epsilon
         MACRO(pi, &macro_press &kp LALT &macro_tap &kp KP_N2 &kp KP_N2 &kp KP_N7 &macro_release &kp LALT)    // pi
         MACRO(sig, &macro_press &kp LALT &macro_tap &kp KP_N2 &kp KP_N2 &kp KP_N9 &macro_release &kp LSHFT &kp LALT)   // sigma
-        MACRO(delta, &macro_press &kp LSHFT &kp LALT &macro_tap &kp D &macro_release &kp LALT)   // Δ
+        MACRO(delta, &macro_press &kp LSHFT &kp LALT &macro_tap &kp D &macro_release &kp LSHFT &kp LALT)     // Δ
         MACRO(plsmns, &macro_press &kp LALT &macro_tap &kp KP_N0 &kp KP_N1 &kp KP_N7 &kp KP_N7 &macro_release &kp LALT)   // plus minus symbol
         MACRO(int, &macro_press &kp LSHFT &macro_tap &kp I &macro_release &kp LSHFT &macro_tap &kp N &kp T &kp E &kp R &kp F &kp E &kp R &kp O &kp M &kp E &kp T &kp E &kp R &kp N2 &kp RET)
         MACRO(paren, &macro_tap &kp F2 &kp LPAR &kp RPAR &kp LEFT)   // double parenthesis
