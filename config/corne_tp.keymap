@@ -77,7 +77,8 @@
         MACRO(mu, &macro_press &kp LALT &macro_tap &kp KP_N2 &kp KP_N3 &kp KP_N0 &macro_release &kp LALT)    // mu
         MACRO(eps, &macro_press &kp LALT &macro_tap &kp KP_N2 &kp KP_N3 &kp KP_N8 &macro_release &kp LALT)   // epsilon
         MACRO(pi, &macro_press &kp LALT &macro_tap &kp KP_N2 &kp KP_N2 &kp KP_N7 &macro_release &kp LALT)    // pi
-        MACRO(sig, &macro_press &kp LALT &macro_tap &kp KP_N2 &kp KP_N2 &kp KP_N9 &macro_release &kp LALT)   // sigma
+        MACRO(sig, &macro_press &kp LALT &macro_tap &kp KP_N2 &kp KP_N2 &kp KP_N9 &macro_release &kp LSHFT &kp LALT)   // sigma
+        MACRO(delta, &macro_press &kp LSHFT &kp LALT &macro_tap &kp D &macro_release &kp LALT)   // Δ
         MACRO(plsmns, &macro_press &kp LALT &macro_tap &kp KP_N0 &kp KP_N1 &kp KP_N7 &kp KP_N7 &macro_release &kp LALT)   // plus minus symbol
         MACRO(int, &macro_press &kp LSHFT &macro_tap &kp I &macro_release &kp LSHFT &macro_tap &kp N &kp T &kp E &kp R &kp F &kp E &kp R &kp O &kp M &kp E &kp T &kp E &kp R &kp N2 &kp RET)
         MACRO(paren, &macro_tap &kp F2 &kp LPAR &kp RPAR &kp LEFT)   // double parenthesis
@@ -118,20 +119,31 @@
   combos {
     compatible = "zmk,combos";
 
-// ╭─────────────────────────╮   COMBOS with   ╭───────────────────────╮
-// │ _   _    _   _  {=} {_} │ SPACE  (40, 43) │ _  {µ} {ε}  _   _   _ │
-// │ _   _    _   _  {+} {-} ╰───╮        ╭────╯ _   _   _   _   _   _ │
-// │ _   _    _   _  {*} {/}  ◯ │        │ ◯   _   _   _   _   _   _ │
-// ╰───────╮ ◯  PRSC _   _   ●  │        │  ●   _   _   _   ◯ ╭──────╯
-//         ╰─────────────────────╯        ╰─────────────────────╯
+// ╭─────────────────────────╮   COMBOS with   ╭────────────────────────╮
+// │ _   _    (   )   =   _  │ SPACE  (40, 43) │ {Δ} {µ} {ε}  _   _   _ │
+// │ _   _    [   ]   +   -  ╰───╮        ╭────╯  _   _   _   _   _   _ │
+// │ _  {°}   {   }   *   /   ◯ │        │ ◯    _   _   _   _   _   _ │
+// ╰───────╮ ◯  PRSC _   _   ●  │        │  ●    _   _   _   ◯ ╭──────╯
+//         ╰─────────────────────╯        ╰──────────────────────╯
             COMBO(cmb_pscrn, &kp PSCRN, 37 40)
-            COMBO(cmb_equal, &kp EQUAL, 4 40)
+
+            COMBO(cmb_lpar, &kp LPAR, 2 40)      // parathesis and others
+            COMBO(cmb_rpar, &kp RPAR, 3 40)
+            COMBO(cmb_lbrack, &kp LBKT, 14 40)
+            COMBO(cmb_rbrack, &kp RBKT, 15 40)
+            COMBO(cmb_lbrace, &kp LBRC, 26 40)
+            COMBO(cmb_rbrace, &kp RBRC, 27 40)
+
+            COMBO(cmb_equal, &kp EQUAL, 4 40)  // math symbols
             COMBO(cmb_under, &kp UNDER, 5 40)
             COMBO(cmb_plus1, &kp PLUS, 16 40)
             COMBO(cmb_minus1, &kp MINUS, 17 40)
             COMBO(cmb_times1, &kp STAR, 28 40)
             COMBO(cmb_divide1, &kp SLASH, 29 40)
+
+            // other symbols
             COMBO(deg, &mcr_deg, 26 40)            // degree
+            COMBO(eps, &mcr_delta, 6 43)           // delta
             COMBO(mu, &mcr_mu, 7 43)               // mu
             COMBO(eps, &mcr_eps, 8 43)             // epsilon
 
@@ -153,10 +165,6 @@
             COMBO(cmb_shft9, &kp LPAR, 9 44)
             COMBO(cmb_shft0, &kp RPAR, 10 44)
             COMBO(cmb_grave, &kp GRAVE, 11 44)
-            COMBO(cmb_lbrack, &kp LBKT, 21 44)
-            COMBO(cmb_rbrack, &kp RBKT, 22 44)
-            COMBO(cmb_lbrace, &kp LBRC, 33 44)
-            COMBO(cmb_rbrace, &kp RBRC, 34 44)
 
 // ╭───────────────────────────╮  OTHER    ╭──────────────────────────╮
 // │ _{esc}_{bs}_{dl}_   _   _ │  COMBOS   │ _    _   _   _   _     _ │
