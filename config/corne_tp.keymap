@@ -122,7 +122,7 @@
 // ╭─────────────────────────╮   COMBOS with   ╭────────────────────────╮
 // │ _   _    (   )   =   _  │ SPACE  (40, 43) │ {Δ} {µ} {ε}  _   _   _ │
 // │ _   _    [   ]   +   -  ╰───╮        ╭────╯  _   _   _   _   _   _ │
-// │ _  {°}   {   }   *   /   ◯ │        │ ◯    _   _   _   _   _   _ │
+// │ _   °    {   }   *   /   ◯ │        │ ◯    _   _   _   _   _   _ │
 // ╰───────╮ ◯  PRSC _   _   ●  │        │  ●    _   _   _   ◯ ╭──────╯
 //         ╰─────────────────────╯        ╰──────────────────────╯
             COMBO(cmb_pscrn, &kp PSCRN, 37 40)
@@ -142,7 +142,7 @@
             COMBO(cmb_divide1, &kp SLASH, 29 40)
 
             // other symbols
-            COMBO(deg, &mcr_deg, 26 40)            // degree
+            COMBO(deg, &mcr_deg, 25 40)            // degree
             COMBO(delta, &mcr_delta, 6 43)         // delta
             COMBO(mu, &mcr_mu, 7 43)               // mu
             COMBO(eps, &mcr_eps, 8 43)             // epsilon
